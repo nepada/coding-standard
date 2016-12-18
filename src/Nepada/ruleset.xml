@@ -1,7 +1,5 @@
 <?xml version="1.0"?>
-<ruleset name="NepadaCondingStandard">
-    <description>Nepada coding standard.</description>
-
+<ruleset name="Nepada Conding Standard">
     <arg name="extensions" value="php,phpt"/>
 
     <rule ref="../../../../consistence/coding-standard/Consistence/ruleset.xml">
