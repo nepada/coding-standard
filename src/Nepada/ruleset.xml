@@ -8,7 +8,7 @@
         <exclude name="PSR2.Namespaces.NamespaceDeclaration.BlankLineAfter"/><!-- too strict, we use 2 lines to separate namespace/use AND class/function -->
         <exclude name="Squiz.Commenting.FunctionComment.IncorrectParamVarName"/><!-- checks for long scalar names in PHPDoc, but we use short -->
         <exclude name="Squiz.Strings.DoubleQuoteUsage.ContainsVar"/><!-- we do not strictly require sprintf -->
-        <exclude name="Squiz.WhiteSpace.FunctionSpacing.Before"/><!-- we use 2 blank lines to separate attributes and methods -->
+        <exclude name="Squiz.WhiteSpace.FunctionSpacing"/><!-- we use 2 blank lines to separate attributes and methods - replaced by our sniff -->
     </rule>
     <rule ref="../../../../slevomat/coding-standard/SlevomatCodingStandard/ruleset.xml">
         <exclude name="SlevomatCodingStandard.Files.TypeNameMatchesFileName"/><!-- because of PSR-4 -->
