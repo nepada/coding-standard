@@ -14,8 +14,8 @@
         }
     ],
     "require": {
-        "consistence/coding-standard": "^0.10",
-        "slevomat/coding-standard": "^1.0"
+        "consistence/coding-standard": "^0.10.1",
+        "slevomat/coding-standard": "^1.0.6"
     },
     "autoload": {
         "psr-4": {
