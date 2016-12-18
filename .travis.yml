@@ -1,0 +1,39 @@
+language: php
+
+php:
+    - 5.6
+    - 7.0
+    - 7.1
+    - hhvm
+
+env:
+    matrix:
+        - dependencies=""
+        - dependencies="--prefer-stable"
+
+matrix:
+    allow_failures:
+        - php: hhvm
+
+    include:
+        - php: 5.6
+          env: dependencies="--prefer-lowest --prefer-stable"
+
+before_install:
+    - composer self-update
+
+install:
+    - composer update --no-interaction --prefer-source $dependencies
+
+before_script:
+    - sed -i "s#../../../../#../../vendor/#" src/CodingStandard/ruleset.xml
+
+script:
+    #- vendor/bin/parallel-lint src
+    - vendor/bin/phpcs --standard=src/CodingStandard/ruleset.xml --encoding=utf-8 -s src
+
+sudo: false
+
+cache:
+    directories:
+        - $HOME/.composer/cache

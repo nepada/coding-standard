@@ -4,7 +4,7 @@
 
     <arg name="extensions" value="php,phpt"/>
 
-    <rule ref="../../vendor/consistence/coding-standard/Consistence/ruleset.xml">
+    <rule ref="../../../../consistence/coding-standard/Consistence/ruleset.xml">
         <exclude name="Generic.WhiteSpace.DisallowSpaceIndent"/><!-- we use spaces instead of tabs -->
         <exclude name="PSR2.Namespaces.UseDeclaration.SpaceAfterLastUse"/><!-- too strict, we use 2 lines to separate namespace/use AND class/function -->
         <exclude name="PSR2.Namespaces.NamespaceDeclaration.BlankLineAfter"/><!-- too strict, we use 2 lines to separate namespace/use AND class/function -->
@@ -13,7 +13,7 @@
         <exclude name="Squiz.WhiteSpace.FunctionSpacing.Before"/><!-- we use 2 blank lines to separate attributes and
          methods -->
     </rule>
-    <rule ref="../../vendor/slevomat/coding-standard/SlevomatCodingStandard/ruleset.xml">
+    <rule ref="../../../../slevomat/coding-standard/SlevomatCodingStandard/ruleset.xml">
         <exclude name="SlevomatCodingStandard.Files.TypeNameMatchesFileName"/><!-- because of PSR-4 -->
         <exclude name="SlevomatCodingStandard.Namespaces.FullyQualifiedClassNameAfterKeyword"/><!-- we don't use FQN -->
         <exclude name="SlevomatCodingStandard.Namespaces.FullyQualifiedExceptions"/><!-- we don't use FQN -->
