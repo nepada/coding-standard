@@ -1,0 +1,58 @@
+<?xml version="1.0"?>
+<ruleset name="NepadaCondingStandard">
+    <description>Nepada coding standard.</description>
+
+    <arg name="extensions" value="php,phpt"/>
+
+    <rule ref="../../vendor/consistence/coding-standard/Consistence/ruleset.xml">
+        <exclude name="Generic.WhiteSpace.DisallowSpaceIndent"/><!-- we use spaces instead of tabs -->
+        <exclude name="PSR2.Namespaces.UseDeclaration.SpaceAfterLastUse"/><!-- too strict, we use 2 lines to separate namespace/use AND class/function -->
+        <exclude name="PSR2.Namespaces.NamespaceDeclaration.BlankLineAfter"/><!-- too strict, we use 2 lines to separate namespace/use AND class/function -->
+        <exclude name="Squiz.Commenting.FunctionComment.IncorrectParamVarName"/><!-- checks for long scalar names in PHPDoc, but we use short -->
+        <exclude name="Squiz.Strings.DoubleQuoteUsage.ContainsVar"/><!-- we do not strictly require sprintf -->
+        <exclude name="Squiz.WhiteSpace.FunctionSpacing.Before"/><!-- we use 2 blank lines to separate attributes and
+         methods -->
+    </rule>
+    <rule ref="../../vendor/slevomat/coding-standard/SlevomatCodingStandard/ruleset.xml">
+        <exclude name="SlevomatCodingStandard.Files.TypeNameMatchesFileName"/><!-- because of PSR-4 -->
+        <exclude name="SlevomatCodingStandard.Namespaces.FullyQualifiedClassNameAfterKeyword"/><!-- we don't use FQN -->
+        <exclude name="SlevomatCodingStandard.Namespaces.FullyQualifiedExceptions"/><!-- we don't use FQN -->
+        <exclude name="SlevomatCodingStandard.Namespaces.UseOnlyWhitelistedNamespaces"/><!-- no hard restrictions on NS -->
+    </rule>
+
+    <rule ref="Generic.CodeAnalysis.JumbledIncrementer"/>
+    <rule ref="Generic.CodeAnalysis.UselessOverridingMethod"/>
+    <rule ref="Generic.WhiteSpace.DisallowTabIndent"/>
+    <rule ref="Generic.WhiteSpace.ScopeIndent">
+        <properties>
+            <property name="tabIndent" value="false"/>
+        </properties>
+    </rule>
+    <rule ref="SlevomatCodingStandard.Namespaces.UnusedUses">
+        <properties>
+            <property name="searchAnnotations" value="true"/>
+        </properties>
+    </rule>
+
+    <!-- allow grouping of exception in one file -->
+    <rule ref="PSR1.Classes.ClassDeclaration.MultipleClasses">
+        <exclude-pattern>*/exceptions.php</exclude-pattern>
+    </rule>
+    <rule ref="Squiz.Classes.ClassFileName.NoMatch">
+        <exclude-pattern>*/exceptions.php</exclude-pattern>
+    </rule>
+
+    <!-- special settings for tests and bootstrap -->
+    <exclude-pattern>*/tests/temp/*</exclude-pattern>
+    <rule ref="PSR1.Files.SideEffects">
+        <exclude-pattern>*.phpt</exclude-pattern>
+        <exclude-pattern>*/bootstrap.php</exclude-pattern>
+    </rule>
+    <rule ref="Squiz.Functions.GlobalFunction">
+        <exclude-pattern>*.phpt</exclude-pattern>
+        <exclude-pattern>*/tests/bootstrap.php</exclude-pattern>
+    </rule>
+    <rule ref="SlevomatCodingStandard.Namespaces.ReferenceUsedNamesOnly.ReferenceViaFullyQualifiedName">
+        <exclude-pattern>*.phpt</exclude-pattern>
+    </rule>
+</ruleset>
