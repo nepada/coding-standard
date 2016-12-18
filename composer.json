@@ -1,0 +1,25 @@
+{
+    "name": "nepada/coding-standard",
+    "type": "library",
+    "license": "BSD-3-Clause",
+    "description": "Nepada coding standard.",
+    "support": {
+        "email": "petr@pada.cz",
+        "issues": "https://github.com/nepada/coding-standard/issues"
+    },
+    "authors": [
+        {
+            "name": "Petr Morávek",
+            "email": "petr@pada.cz"
+        }
+    ],
+    "require": {
+        "consistence/coding-standard": "^0.10",
+        "slevomat/coding-standard": "^1.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Nepada\\CodingStandard\\": "src/CodingStandard/"
+        }
+    }
+}
