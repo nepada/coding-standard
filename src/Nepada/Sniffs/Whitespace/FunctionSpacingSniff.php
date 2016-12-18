@@ -55,7 +55,7 @@ class FunctionSpacingSniff implements PHP_CodeSniffer_Sniff
     private function checkSpacingBeforeFunction(PHP_CodeSniffer_File $phpcsFile, $pointer)
     {
         $tokens = $phpcsFile->getTokens();
-        $expectedSpacing = $this->regularSpacing;
+        $expectedSpacing = (int) $this->regularSpacing;
 
         $prevLineToken = null;
         for ($i = $pointer; $i > 0; $i--) {
