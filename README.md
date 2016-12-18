@@ -26,7 +26,7 @@ You can either use the ruleset as-is, or customize it to suit your needs:
 ```xml
 <?xml version="1.0"?>
 <ruleset name="FooProject">
-	<rule ref="vendor/nepada/coding-standard/src/CodingStandard/ruleset.xml"/>
+	<rule ref="vendor/nepada/coding-standard/src/Nepada/ruleset.xml"/>
 	<!-- additional settings -->
 </ruleset>
 ```

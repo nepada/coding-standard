@@ -26,11 +26,11 @@ install:
     - composer update --no-interaction --prefer-source $dependencies
 
 before_script:
-    - sed -i "s#../../../../#../../vendor/#" src/CodingStandard/ruleset.xml
+    - sed -i "s#../../../../#../../vendor/#" src/Nepada/ruleset.xml
 
 script:
     #- vendor/bin/parallel-lint src
-    - vendor/bin/phpcs --standard=src/CodingStandard/ruleset.xml --encoding=utf-8 -s src
+    - vendor/bin/phpcs --standard=src/Nepada/ruleset.xml --encoding=utf-8 -s src
 
 sudo: false
 
