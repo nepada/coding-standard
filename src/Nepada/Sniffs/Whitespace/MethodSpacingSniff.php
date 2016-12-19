@@ -7,14 +7,14 @@
 namespace Nepada\Sniffs\Whitespace;
 
 use PHP_CodeSniffer_File;
-use PHP_CodeSniffer_Sniff;
+use PHP_CodeSniffer_Standards_AbstractScopeSniff;
 
 
 /**
  * Ensure spacing between functions/methods and add extra spacing between class attributes and methods.
  * Based on Squiz_Sniffs_WhiteSpace_FunctionSpacingSniff by Greg Sherwood <gsherwood@squiz.net> and Marc McIntyre <mmcintyre@squiz.net>.
  */
-class FunctionSpacingSniff implements PHP_CodeSniffer_Sniff
+class MethodSpacingSniff extends PHP_CodeSniffer_Standards_AbstractScopeSniff
 {
 
     /** @var int */
@@ -25,34 +25,31 @@ class FunctionSpacingSniff implements PHP_CodeSniffer_Sniff
 
 
     /**
-     * @return integer[]
+     * Constructs a Squiz_Sniffs_Scope_MethodScopeSniff.
      */
-    public function register()
+    public function __construct()
     {
-        return [
-            T_FUNCTION,
-        ];
+        parent::__construct([T_CLASS, T_TRAIT, T_INTERFACE], [T_FUNCTION]);
 
     }
 
     /**
      * @param PHP_CodeSniffer_File $phpcsFile The file being scanned.
      * @param int $pointer The position of the current token in the stack passed in $tokens.
-     * @return void
+     * @param int $scopePointer The current scope opener token.
      */
-    public function process(PHP_CodeSniffer_File $phpcsFile, $pointer)
+    protected function processTokenWithinScope(PHP_CodeSniffer_File $phpcsFile, $pointer, $scopePointer)
     {
-        $this->regularSpacing = (int) $this->regularSpacing;
-
-        $this->checkSpacingBeforeFunction($phpcsFile, $pointer);
-        $this->checkSpacingAfterFunction($phpcsFile, $pointer);
+        $this->checkSpacingBeforeFunction($phpcsFile, $pointer, $scopePointer);
+        $this->checkSpacingAfterFunction($phpcsFile, $pointer, $scopePointer);
     }
 
     /**
      * @param PHP_CodeSniffer_File $phpcsFile The file being scanned.
      * @param int $pointer The position of the current token in the stack passed in $tokens.
+     * @param int $scopePointer The current scope opener token.
      */
-    private function checkSpacingBeforeFunction(PHP_CodeSniffer_File $phpcsFile, $pointer)
+    private function checkSpacingBeforeFunction(PHP_CodeSniffer_File $phpcsFile, $pointer, $scopePointer)
     {
         $tokens = $phpcsFile->getTokens();
         $expectedSpacing = (int) $this->regularSpacing;
@@ -68,10 +65,8 @@ class FunctionSpacingSniff implements PHP_CodeSniffer_Sniff
             $foundLines = 0;
 
         } else {
-            $currentLine = $tokens[$pointer]['line'];
-
             $prevContent = $phpcsFile->findPrevious(T_WHITESPACE, $prevLineToken, null, true);
-            if ($tokens[$prevContent]['code'] === T_DOC_COMMENT_CLOSE_TAG && $tokens[$prevContent]['line'] === ($currentLine - 1)) {
+            if ($tokens[$prevContent]['code'] === T_DOC_COMMENT_CLOSE_TAG && $tokens[$prevContent]['line'] === ($tokens[$pointer]['line'] - 1)) {
                 // Account for function comments.
                 $prevContent = $phpcsFile->findPrevious(T_WHITESPACE, ($tokens[$prevContent]['comment_opener'] - 1), null, true);
             }
@@ -79,10 +74,9 @@ class FunctionSpacingSniff implements PHP_CodeSniffer_Sniff
             // Before we throw an error, check that we are not throwing an error
             // for another function. We don't want to error for no blank lines after
             // the previous function and no blank lines before this one as well.
-            $prevLine = $tokens[$prevContent]['line'] - 1;
             $i = $pointer - 1;
             $foundLines = 0;
-            while ($currentLine !== $prevLine && $currentLine > 1 && $i > 0) {
+            while ($tokens[$i]['line'] >= $tokens[$prevContent]['line'] && $i > 0) {
                 if (isset($tokens[$i]['scope_condition']) === true) {
                     $scopeCondition = $tokens[$i]['scope_condition'];
                     if ($tokens[$scopeCondition]['code'] === T_FUNCTION) {
@@ -92,29 +86,31 @@ class FunctionSpacingSniff implements PHP_CodeSniffer_Sniff
                 } elseif ($tokens[$i]['code'] === T_FUNCTION) {
                     // Found another interface function.
                     return;
-                } elseif (
-                    $tokens[$i]['code'] === T_NAMESPACE
-                    || ($tokens[$i]['code'] === T_USE && UseDeclarationSpacingSniff::isImportNamespaceUse($phpcsFile, $i))
-                ) {
-                    // Namespace or import declaration... this should be handled elsewhere
+                } elseif ($tokens[$i]['code'] === T_NAMESPACE) {
+                    // Namespace declaration... should be handled elsewhere
                     return;
-                } elseif (in_array($tokens[$i]['code'], [T_CONST, T_VARIABLE, T_USE], true)) {
-                    $expectedSpacing = $this->regularSpacing + $this->extraSpacing;
+                } elseif ($tokens[$i]['code'] === T_USE && UseDeclarationSpacingSniff::isImportNamespaceUse($phpcsFile, $i)) {
+                    // Use import declaration... this should be handled elsewhere
+                    return;
                 }
 
-                $currentLine = $tokens[$i]['line'];
-                if ($currentLine === $prevLine) {
-                    break;
-                }
-
-                if ($tokens[($i - 1)]['line'] < $currentLine && $tokens[($i + 1)]['line'] > $currentLine) {
+                if (
+                    $tokens[$i]['code'] === T_WHITESPACE
+                    && $tokens[($i - 1)]['line'] < $tokens[$i]['line']
+                    && $tokens[($i + 1)]['line'] > $tokens[$i]['line']
+                ) {
                     // This token is on a line by itself. If it is whitespace, the line is empty.
-                    if ($tokens[$i]['code'] === T_WHITESPACE) {
-                        $foundLines++;
-                    }
+                    $foundLines++;
                 }
 
                 $i--;
+            }
+
+            for ($i = $tokens[$scopePointer]['scope_opener']; $i <= $pointer; $i++) {
+                if (in_array($tokens[$i]['code'], [T_CONST, T_VARIABLE, T_USE], true)) {
+                    $expectedSpacing =  (int) ($this->regularSpacing + $this->extraSpacing);
+                    break;
+                }
             }
         }
 
@@ -134,8 +130,9 @@ class FunctionSpacingSniff implements PHP_CodeSniffer_Sniff
     /**
      * @param PHP_CodeSniffer_File $phpcsFile The file being scanned.
      * @param int $pointer The position of the current token in the stack passed in $tokens.
+     * @param int $scopePointer The current scope opener token.
      */
-    private function checkSpacingAfterFunction(PHP_CodeSniffer_File $phpcsFile, $pointer)
+    private function checkSpacingAfterFunction(PHP_CodeSniffer_File $phpcsFile, $pointer, $scopePointer)
     {
         $tokens = $phpcsFile->getTokens();
         $expectedSpacing = $this->regularSpacing;
