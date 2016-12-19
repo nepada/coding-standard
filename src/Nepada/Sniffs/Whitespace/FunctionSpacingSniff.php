@@ -104,7 +104,7 @@ class FunctionSpacingSniff implements PHP_CodeSniffer_Sniff
                     // Namespace or import declaration... this should be handled elsewhere
                     return;
                 } elseif (in_array($tokens[$i]['code'], [T_CONST, T_VARIABLE, T_USE], true)) {
-                    $expectedSpacing += $this->extraSpacing;
+                    $expectedSpacing = $this->regularSpacing + $this->extraSpacing;
                 }
 
                 $currentLine = $tokens[$i]['line'];
