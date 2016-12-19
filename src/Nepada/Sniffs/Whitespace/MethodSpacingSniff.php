@@ -106,10 +106,12 @@ class MethodSpacingSniff extends PHP_CodeSniffer_Standards_AbstractScopeSniff
                 $i--;
             }
 
-            for ($i = $tokens[$scopePointer]['scope_opener']; $i <= $pointer; $i++) {
-                if (in_array($tokens[$i]['code'], [T_CONST, T_VARIABLE, T_USE], true)) {
-                    $expectedSpacing = (int) ($this->regularSpacing + $this->extraSpacing);
+            for ($i = $tokens[$scopePointer]['scope_opener']; $i <= $prevContent; $i++) {
+                if ($tokens[$i]['code'] === T_FUNCTION) {
+                    $expectedSpacing = (int) $this->regularSpacing;
                     break;
+                } elseif (in_array($tokens[$i]['code'], [T_CONST, T_VARIABLE, T_USE], true)) {
+                    $expectedSpacing = (int) ($this->regularSpacing + $this->extraSpacing);
                 }
             }
         }
