@@ -38,14 +38,14 @@ class UseDeclarationSpacingSniff implements PHP_CodeSniffer_Sniff
      */
     public function process(PHP_CodeSniffer_File $phpcsFile, $pointer)
     {
-        if ($this->shouldIgnore($phpcsFile, $pointer)) {
+        if (!static::isImportNamespaceUse($phpcsFile, $pointer)) {
             return;
         }
 
         $tokens = $phpcsFile->getTokens();
 
         $nextUse = $phpcsFile->findNext(T_USE, $pointer + 1);
-        while ($nextUse && $this->shouldIgnore($phpcsFile, $nextUse)) {
+        while ($nextUse && !static::isImportNamespaceUse($phpcsFile, $nextUse)) {
             $nextUse = $phpcsFile->findNext(T_USE, $nextUse + 1);
         }
 
@@ -81,22 +81,22 @@ class UseDeclarationSpacingSniff implements PHP_CodeSniffer_Sniff
      * @param int $pointer The position of the current token in the stack passed in $tokens.
      * @return bool
      */
-    private function shouldIgnore(PHP_CodeSniffer_File $phpcsFile, $pointer)
+    public static function isImportNamespaceUse(PHP_CodeSniffer_File $phpcsFile, $pointer)
     {
         $tokens = $phpcsFile->getTokens();
 
         // Ignore USE keywords inside closures.
         $next = $phpcsFile->findNext(T_WHITESPACE, $pointer + 1, null, true);
         if ($tokens[$next]['code'] === T_OPEN_PARENTHESIS) {
-            return true;
+            return false;
         }
 
         // Ignore USE keywords for traits.
         if ($phpcsFile->hasCondition($pointer, [T_CLASS, T_TRAIT])) {
-            return true;
+            return false;
         }
 
-        return false;
+        return true;
     }
 
 }

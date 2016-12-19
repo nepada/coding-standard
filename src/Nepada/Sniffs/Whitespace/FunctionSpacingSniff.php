@@ -57,21 +57,16 @@ class FunctionSpacingSniff implements PHP_CodeSniffer_Sniff
         $tokens = $phpcsFile->getTokens();
         $expectedSpacing = (int) $this->regularSpacing;
 
-        $prevLineToken = null;
-        for ($i = $pointer; $i > 0; $i--) {
-            if (strpos($tokens[$i]['content'], $phpcsFile->eolChar) === false) {
-                continue;
-            } else {
-                $prevLineToken = $i;
-                break;
-            }
+        $prevLineToken = $pointer - 1;
+        while ($prevLineToken > 0 && $tokens[$prevLineToken]['line'] === $tokens[$pointer]['line']) {
+            $prevLineToken--;
         }
 
-        if ($prevLineToken === null) {
+        if ($tokens[$prevLineToken]['line'] === $tokens[$pointer]['line']) {
             // Never found the previous line, which means
             // there are 0 blank lines before the function.
             $foundLines = 0;
-            $prevContent = 0;
+
         } else {
             $currentLine = $tokens[$pointer]['line'];
 
@@ -85,7 +80,7 @@ class FunctionSpacingSniff implements PHP_CodeSniffer_Sniff
             // for another function. We don't want to error for no blank lines after
             // the previous function and no blank lines before this one as well.
             $prevLine = $tokens[$prevContent]['line'] - 1;
-            $i = ($pointer - 1);
+            $i = $pointer - 1;
             $foundLines = 0;
             while ($currentLine !== $prevLine && $currentLine > 1 && $i > 0) {
                 if (isset($tokens[$i]['scope_condition']) === true) {
@@ -99,7 +94,7 @@ class FunctionSpacingSniff implements PHP_CodeSniffer_Sniff
                     return;
                 } elseif (
                     $tokens[$i]['code'] === T_NAMESPACE
-                    || ($tokens[$i]['code'] === T_USE && !$phpcsFile->hasCondition($i, [T_CLASS, T_TRAIT]))
+                    || ($tokens[$i]['code'] === T_USE && UseDeclarationSpacingSniff::isImportNamespaceUse($phpcsFile, $i))
                 ) {
                     // Namespace or import declaration... this should be handled elsewhere
                     return;
@@ -145,7 +140,7 @@ class FunctionSpacingSniff implements PHP_CodeSniffer_Sniff
         $tokens = $phpcsFile->getTokens();
         $expectedSpacing = $this->regularSpacing;
 
-        if (isset($tokens[$pointer]['scope_closer']) === false) {
+        if (!isset($tokens[$pointer]['scope_closer'])) {
             // Must be an interface method, so the closer is the semicolon.
             $closer = $phpcsFile->findNext(T_SEMICOLON, $pointer);
         } else {
@@ -153,13 +148,12 @@ class FunctionSpacingSniff implements PHP_CodeSniffer_Sniff
         }
 
         // Allow for comments on the same line as the closer.
-        for ($nextLineToken = ($closer + 1); $nextLineToken < $phpcsFile->numTokens; $nextLineToken++) {
-            if ($tokens[$nextLineToken]['line'] !== $tokens[$closer]['line']) {
-                break;
-            }
+        $nextLineToken = $closer + 1;
+        while ($nextLineToken < $phpcsFile->numTokens && $tokens[$nextLineToken]['line'] === $tokens[$closer]['line']) {
+            $nextLineToken++;
         }
 
-        if ($nextLineToken === ($phpcsFile->numTokens - 1)) {
+        if ($nextLineToken === $phpcsFile->numTokens - 1) {
             // We are at the end of the file.
             // Don't check spacing after the function because this
             // should be done by an EOF sniff.
