@@ -44,7 +44,7 @@ class NamespaceDeclarationSpacingSniff implements PHP_CodeSniffer_Sniff
         $tokens = $phpcsFile->getTokens();
 
         $nextLineToken = $pointer + 1;
-        while ($nextLineToken < ($phpcsFile->numTokens - 1) && $tokens[$nextLineToken]['line'] === $tokens[$pointer]['line']) {
+        while ($nextLineToken < $phpcsFile->numTokens && $tokens[$nextLineToken]['line'] === $tokens[$pointer]['line']) {
             $nextLineToken++;
         }
 
@@ -56,7 +56,7 @@ class NamespaceDeclarationSpacingSniff implements PHP_CodeSniffer_Sniff
         $isUseStatement = false;
         $nextContentLine = $tokens[$nextContent]['line'];
         $i = $nextContent;
-        while ($i < ($phpcsFile->numTokens - 1) && $tokens[$i]['line'] === $nextContentLine) {
+        while ($i < $phpcsFile->numTokens && $tokens[$i]['line'] === $nextContentLine) {
             if ($tokens[$i]['code'] === T_USE) {
                 $isUseStatement = true;
                 break;
