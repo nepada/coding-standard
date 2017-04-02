@@ -23,7 +23,7 @@ before_install:
     - composer self-update
 
 install:
-    - composer update --no-interaction --prefer-source $dependencies
+    - composer update --no-interaction --prefer-dist $dependencies
 
 before_script:
     - sed -i "s#../../../../#../../vendor/#" src/Nepada/ruleset.xml
