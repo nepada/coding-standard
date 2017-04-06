@@ -15,6 +15,7 @@
     ],
     "require": {
         "consistence/coding-standard": "^0.10.1",
+        "jakub-onderka/php-parallel-lint": "^0.9",
         "slevomat/coding-standard": "^1.0.6"
     },
     "autoload": {
