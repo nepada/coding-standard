@@ -142,7 +142,7 @@ class MethodSpacingSniff extends PHP_CodeSniffer_Standards_AbstractScopeSniff
 
         if (!isset($tokens[$pointer]['scope_closer'])) {
             // Must be an interface method, so the closer is the semicolon.
-            $closer = $phpcsFile->findNext(T_SEMICOLON, $pointer);
+            $closer = $phpcsFile->findNext([T_SEMICOLON], $pointer);
         } else {
             $closer = $tokens[$pointer]['scope_closer'];
         }
@@ -160,7 +160,7 @@ class MethodSpacingSniff extends PHP_CodeSniffer_Standards_AbstractScopeSniff
             return;
         }
 
-        $nextContent = $phpcsFile->findNext(T_WHITESPACE, $nextLineToken, null, true);
+        $nextContent = $phpcsFile->findNext([T_WHITESPACE], $nextLineToken, null, true);
         if ($nextContent === false) {
             // We are at the end of the file.
             // Don't check spacing after the function because this

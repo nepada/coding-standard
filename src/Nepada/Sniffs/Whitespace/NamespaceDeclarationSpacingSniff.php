@@ -50,7 +50,7 @@ class NamespaceDeclarationSpacingSniff implements PHP_CodeSniffer_Sniff
             $nextLineToken++;
         }
 
-        $nextContent = $phpcsFile->findNext(T_WHITESPACE, $nextLineToken, $phpcsFile->numTokens, true);
+        $nextContent = $phpcsFile->findNext([T_WHITESPACE], $nextLineToken, $phpcsFile->numTokens, true);
         if ($nextContent === false) {
             return;
         }

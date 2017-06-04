@@ -46,17 +46,17 @@ class UseDeclarationSpacingSniff implements PHP_CodeSniffer_Sniff
 
         $tokens = $phpcsFile->getTokens();
 
-        $nextUse = $phpcsFile->findNext(T_USE, $pointer + 1);
+        $nextUse = $phpcsFile->findNext([T_USE], $pointer + 1);
         while (is_int($nextUse) && !static::isImportNamespaceUse($phpcsFile, $nextUse)) {
-            $nextUse = $phpcsFile->findNext(T_USE, $nextUse + 1);
+            $nextUse = $phpcsFile->findNext([T_USE], $nextUse + 1);
         }
 
         if ($nextUse !== false) {
             return;
         }
 
-        $endOfUse = $phpcsFile->findNext(T_SEMICOLON, $pointer + 1);
-        $nextContent = $phpcsFile->findNext(T_WHITESPACE, $endOfUse + 1, null, true);
+        $endOfUse = $phpcsFile->findNext([T_SEMICOLON], $pointer + 1);
+        $nextContent = $phpcsFile->findNext([T_WHITESPACE], $endOfUse + 1, null, true);
 
         if ($tokens[$nextContent]['code'] === T_CLOSE_TAG) {
             return;
@@ -87,7 +87,7 @@ class UseDeclarationSpacingSniff implements PHP_CodeSniffer_Sniff
         $tokens = $phpcsFile->getTokens();
 
         // Ignore USE keywords inside closures.
-        $next = $phpcsFile->findNext(T_WHITESPACE, $pointer + 1, null, true);
+        $next = $phpcsFile->findNext([T_WHITESPACE], $pointer + 1, null, true);
         if ($tokens[$next]['code'] === T_OPEN_PARENTHESIS) {
             return false;
         }
