@@ -6,15 +6,20 @@
         <exclude name="Generic.WhiteSpace.DisallowSpaceIndent"/><!-- we use spaces instead of tabs -->
         <exclude name="PSR2.Namespaces.UseDeclaration.SpaceAfterLastUse"/><!-- too strict, we use 2 lines to separate namespace/use AND class/function -->
         <exclude name="PSR2.Namespaces.NamespaceDeclaration.BlankLineAfter"/><!-- too strict, we use 2 lines to separate namespace/use AND class/function -->
-        <exclude name="Squiz.Commenting.FunctionComment.IncorrectParamVarName"/><!-- checks for long scalar names in PHPDoc, but we use short -->
         <exclude name="Squiz.Strings.DoubleQuoteUsage.ContainsVar"/><!-- we do not strictly require sprintf -->
         <exclude name="Squiz.WhiteSpace.FunctionSpacing"/><!-- we use 2 blank lines to separate attributes and methods - replaced by our sniff -->
     </rule>
     <rule ref="../../../../slevomat/coding-standard/SlevomatCodingStandard/ruleset.xml">
+        <exclude name="SlevomatCodingStandard.Classes.ClassConstantVisibility"/><!-- PHP 7.1 only feature -->
+        <exclude name="SlevomatCodingStandard.ControlStructures.DisallowEqualOperators"/><!-- allow use of == and != -->
         <exclude name="SlevomatCodingStandard.Files.TypeNameMatchesFileName"/><!-- because of PSR-4 -->
+        <exclude name="SlevomatCodingStandard.Namespaces.FullyQualifiedClassNameInAnnotation"/><!-- we don't use FQN -->
         <exclude name="SlevomatCodingStandard.Namespaces.FullyQualifiedClassNameAfterKeyword"/><!-- we don't use FQN -->
         <exclude name="SlevomatCodingStandard.Namespaces.FullyQualifiedExceptions"/><!-- we don't use FQN -->
         <exclude name="SlevomatCodingStandard.Namespaces.UseOnlyWhitelistedNamespaces"/><!-- no hard restrictions on NS -->
+        <exclude name="SlevomatCodingStandard.TypeHints.TypeHintDeclaration.UselessParameterAnnotation"/><!-- keep all PHPdoc blocks -->
+        <exclude name="SlevomatCodingStandard.TypeHints.TypeHintDeclaration.UselessReturnAnnotation"/><!-- keep all PHPdoc blocks -->
+        <exclude name="SlevomatCodingStandard.TypeHints.TypeHintDeclaration.UselessDocComment"/><!-- keep all PHPdoc blocks -->
     </rule>
 
     <rule ref="Generic.CodeAnalysis.JumbledIncrementer"/>
@@ -34,6 +39,19 @@
     <rule ref="SlevomatCodingStandard.Namespaces.UnusedUses">
         <properties>
             <property name="searchAnnotations" value="true"/>
+        </properties>
+    </rule>
+    <rule ref="SlevomatCodingStandard.Namespaces.ReferenceUsedNamesOnly">
+        <properties>
+            <property name="allowFullyQualifiedExceptions" value="false"/>
+            <property name="allowFullyQualifiedGlobalClasses" value="true"/>
+            <property name="allowPartialUses" value="true"/>
+            <property name="fullyQualifiedKeywords" type="array" value=""/>
+        </properties>
+    </rule>
+    <rule ref="SlevomatCodingStandard.TypeHints.DeclareStrictTypes">
+        <properties>
+            <property name="newlinesCountBetweenOpenTagAndDeclare" value="1"/>
         </properties>
     </rule>
 
