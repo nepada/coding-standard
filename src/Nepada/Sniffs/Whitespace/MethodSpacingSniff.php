@@ -54,7 +54,7 @@ class MethodSpacingSniff extends PHP_CodeSniffer_Standards_AbstractScopeSniff
     private function checkSpacingBeforeFunction(PHP_CodeSniffer_File $phpcsFile, int $pointer, int $scopePointer)
     {
         $tokens = $phpcsFile->getTokens();
-        $expectedSpacing = (int) $this->regularSpacing;
+        $expectedSpacing = $this->regularSpacing;
 
         $prevLineToken = $pointer - 1;
         while ($prevLineToken > 0 && $tokens[$prevLineToken]['line'] === $tokens[$pointer]['line']) {
@@ -110,10 +110,10 @@ class MethodSpacingSniff extends PHP_CodeSniffer_Standards_AbstractScopeSniff
 
             for ($i = $tokens[$scopePointer]['scope_opener']; $i <= $prevContent; $i++) {
                 if ($tokens[$i]['code'] === T_FUNCTION) {
-                    $expectedSpacing = (int) $this->regularSpacing;
+                    $expectedSpacing = $this->regularSpacing;
                     break;
                 } elseif (in_array($tokens[$i]['code'], [T_CONST, T_VARIABLE, T_USE], true)) {
-                    $expectedSpacing = (int) ($this->regularSpacing + $this->extraSpacing);
+                    $expectedSpacing = $this->regularSpacing + $this->extraSpacing;
                 }
             }
         }

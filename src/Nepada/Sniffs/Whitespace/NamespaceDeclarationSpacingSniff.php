@@ -66,7 +66,7 @@ class NamespaceDeclarationSpacingSniff implements PHP_CodeSniffer_Sniff
             $i++;
         }
 
-        $expectedSpacing = (int) ($isUseStatement ? $this->useSpacing : $this->otherSpacing);
+        $expectedSpacing = $isUseStatement ? $this->useSpacing : $this->otherSpacing;
         $foundLines = $tokens[$nextContent]['line'] - $tokens[$nextLineToken]['line'];
 
         if ($foundLines !== $expectedSpacing) {

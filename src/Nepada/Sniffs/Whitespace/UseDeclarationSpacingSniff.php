@@ -62,7 +62,7 @@ class UseDeclarationSpacingSniff implements PHP_CodeSniffer_Sniff
             return;
         }
 
-        $expectedSpacing = (int) $this->otherSpacing;
+        $expectedSpacing = $this->otherSpacing;
         $foundLines = $tokens[$nextContent]['line'] - $tokens[$endOfUse]['line'] - 1;
         if ($foundLines !== $expectedSpacing) {
             $error = 'Expected %s blank line';
