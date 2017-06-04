@@ -25,8 +25,8 @@ before_script:
 
 script:
     - vendor/bin/parallel-lint src
-    - vendor/bin/phpstan analyse -c tests/phpstan.neon -l 7 src
     - vendor/bin/phpcs --standard=src/Nepada/ruleset-php70.xml --encoding=utf-8 -s src
+    - vendor/bin/phpstan analyse -c tests/phpstan.neon -l 7 src
 
 sudo: false
 

@@ -1,2 +1,3 @@
 parameters:
-	bootstrap: %rootDir%/../../../tests/phpstan-bootstrap.php
+    autoload_files:
+        - %rootDir%/../../squizlabs/php_codesniffer/CodeSniffer/Tokens.php
