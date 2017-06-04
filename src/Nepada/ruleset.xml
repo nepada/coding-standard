@@ -10,7 +10,6 @@
         <exclude name="Squiz.WhiteSpace.FunctionSpacing"/><!-- we use 2 blank lines to separate attributes and methods - replaced by our sniff -->
     </rule>
     <rule ref="../../../../slevomat/coding-standard/SlevomatCodingStandard/ruleset.xml">
-        <exclude name="SlevomatCodingStandard.Classes.ClassConstantVisibility"/><!-- PHP 7.1 only feature -->
         <exclude name="SlevomatCodingStandard.ControlStructures.DisallowEqualOperators"/><!-- allow use of == and != -->
         <exclude name="SlevomatCodingStandard.Files.TypeNameMatchesFileName"/><!-- because of PSR-4 -->
         <exclude name="SlevomatCodingStandard.Namespaces.FullyQualifiedClassNameInAnnotation"/><!-- we don't use FQN -->
