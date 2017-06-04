@@ -16,8 +16,10 @@
     "require": {
         "php": ">=7.0",
         "consistence/coding-standard": "^1.1",
-        "jakub-onderka/php-parallel-lint": "^0.9",
         "slevomat/coding-standard": "^2.4.2"
+    },
+    "require-dev": {
+        "jakub-onderka/php-parallel-lint": "^0.9"
     },
     "autoload": {
         "psr-4": {
