@@ -47,7 +47,7 @@ class UseDeclarationSpacingSniff implements PHP_CodeSniffer_Sniff
         $tokens = $phpcsFile->getTokens();
 
         $nextUse = $phpcsFile->findNext(T_USE, $pointer + 1);
-        while ($nextUse && !static::isImportNamespaceUse($phpcsFile, $nextUse)) {
+        while (is_int($nextUse) && !static::isImportNamespaceUse($phpcsFile, $nextUse)) {
             $nextUse = $phpcsFile->findNext(T_USE, $nextUse + 1);
         }
 
