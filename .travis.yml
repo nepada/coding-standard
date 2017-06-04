@@ -3,7 +3,6 @@ language: php
 php:
     - 7.0
     - 7.1
-    - hhvm
 
 env:
     matrix:
@@ -11,9 +10,6 @@ env:
         - dependencies="--prefer-stable"
 
 matrix:
-    allow_failures:
-        - php: hhvm
-
     include:
         - php: 7.0
           env: dependencies="--prefer-lowest --prefer-stable"
@@ -29,6 +25,7 @@ before_script:
 
 script:
     - vendor/bin/parallel-lint src
+    - vendor/bin/phpstan analyse -c tests/phpstan.neon -l 7 src
     - vendor/bin/phpcs --standard=src/Nepada/ruleset.xml --encoding=utf-8 -s src
 
 sudo: false
