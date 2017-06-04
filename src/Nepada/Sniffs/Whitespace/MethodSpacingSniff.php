@@ -1,4 +1,6 @@
 <?php
+declare(strict_types = 1);
+
 /**
  * This file is part of the nepada/coding-standard.
  * Copyright (c) 2016 Petr Morávek (petr@pada.cz)
@@ -30,10 +32,10 @@ class MethodSpacingSniff extends PHP_CodeSniffer_Standards_AbstractScopeSniff
     public function __construct()
     {
         parent::__construct([T_CLASS, T_TRAIT, T_INTERFACE], [T_FUNCTION]);
-
     }
 
     /**
+     * @phpcsSuppress SlevomatCodingStandard.TypeHints.TypeHintDeclaration.MissingParameterTypeHint
      * @param PHP_CodeSniffer_File $phpcsFile The file being scanned.
      * @param int $pointer The position of the current token in the stack passed in $tokens.
      * @param int $scopePointer The current scope opener token.
@@ -41,7 +43,7 @@ class MethodSpacingSniff extends PHP_CodeSniffer_Standards_AbstractScopeSniff
     protected function processTokenWithinScope(PHP_CodeSniffer_File $phpcsFile, $pointer, $scopePointer)
     {
         $this->checkSpacingBeforeFunction($phpcsFile, $pointer, $scopePointer);
-        $this->checkSpacingAfterFunction($phpcsFile, $pointer, $scopePointer);
+        $this->checkSpacingAfterFunction($phpcsFile, $pointer);
     }
 
     /**
@@ -49,7 +51,7 @@ class MethodSpacingSniff extends PHP_CodeSniffer_Standards_AbstractScopeSniff
      * @param int $pointer The position of the current token in the stack passed in $tokens.
      * @param int $scopePointer The current scope opener token.
      */
-    private function checkSpacingBeforeFunction(PHP_CodeSniffer_File $phpcsFile, $pointer, $scopePointer)
+    private function checkSpacingBeforeFunction(PHP_CodeSniffer_File $phpcsFile, int $pointer, int $scopePointer)
     {
         $tokens = $phpcsFile->getTokens();
         $expectedSpacing = (int) $this->regularSpacing;
@@ -132,9 +134,8 @@ class MethodSpacingSniff extends PHP_CodeSniffer_Standards_AbstractScopeSniff
     /**
      * @param PHP_CodeSniffer_File $phpcsFile The file being scanned.
      * @param int $pointer The position of the current token in the stack passed in $tokens.
-     * @param int $scopePointer The current scope opener token.
      */
-    private function checkSpacingAfterFunction(PHP_CodeSniffer_File $phpcsFile, $pointer, $scopePointer)
+    private function checkSpacingAfterFunction(PHP_CodeSniffer_File $phpcsFile, int $pointer)
     {
         $tokens = $phpcsFile->getTokens();
         $expectedSpacing = $this->regularSpacing;

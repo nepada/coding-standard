@@ -1,4 +1,6 @@
 <?php
+declare(strict_types = 1);
+
 /**
  * This file is part of the nepada/coding-standard.
  * Copyright (c) 2016 Petr Morávek (petr@pada.cz)
@@ -24,17 +26,17 @@ class NamespaceDeclarationSpacingSniff implements PHP_CodeSniffer_Sniff
 
 
     /**
-     * @return integer[]
+     * @return int[]
      */
-    public function register()
+    public function register(): array
     {
         return [
             T_NAMESPACE,
         ];
-
     }
 
     /**
+     * @phpcsSuppress SlevomatCodingStandard.TypeHints.TypeHintDeclaration.MissingParameterTypeHint
      * @param PHP_CodeSniffer_File $phpcsFile The file being scanned.
      * @param int $pointer The position of the current token in the stack passed in $tokens.
      * @return void
