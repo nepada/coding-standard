@@ -27,6 +27,7 @@ You can either use the ruleset as-is, or customize it to suit your needs:
 <?xml version="1.0"?>
 <ruleset name="FooProject">
 	<rule ref="vendor/nepada/coding-standard/src/Nepada/ruleset.xml"/>
+	<!-- <rule ref="vendor/nepada/coding-standard/src/Nepada/ruleset-php70.xml"/> if you want to explicitly disable checks for PHP >= 7.1 features -->
 	<!-- additional settings -->
 </ruleset>
 ```
