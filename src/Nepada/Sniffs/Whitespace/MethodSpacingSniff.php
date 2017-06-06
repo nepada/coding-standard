@@ -35,6 +35,7 @@ class MethodSpacingSniff extends PHP_CodeSniffer_Standards_AbstractScopeSniff
     }
 
     /**
+     * TODO: add scalar typehints
      * @phpcsSuppress SlevomatCodingStandard.TypeHints.TypeHintDeclaration.MissingParameterTypeHint
      * @param PHP_CodeSniffer_File $phpcsFile The file being scanned.
      * @param int $pointer The position of the current token in the stack passed in $tokens.
