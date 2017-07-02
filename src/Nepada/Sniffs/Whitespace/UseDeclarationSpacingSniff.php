@@ -8,14 +8,14 @@ declare(strict_types = 1);
 
 namespace Nepada\Sniffs\Whitespace;
 
-use PHP_CodeSniffer_File;
-use PHP_CodeSniffer_Sniff;
+use PHP_CodeSniffer\Files\File;
+use PHP_CodeSniffer\Sniffs\Sniff;
 
 
 /**
  * Ensure spacing between import statements and rest of the code.
  */
-class UseDeclarationSpacingSniff implements PHP_CodeSniffer_Sniff
+class UseDeclarationSpacingSniff implements Sniff
 {
 
     /** @var int */
@@ -36,11 +36,11 @@ class UseDeclarationSpacingSniff implements PHP_CodeSniffer_Sniff
      * TODO: add scalar typehints
      *
      * @phpcsSuppress SlevomatCodingStandard.TypeHints.TypeHintDeclaration.MissingParameterTypeHint
-     * @param PHP_CodeSniffer_File $phpcsFile The file being scanned.
+     * @param File $phpcsFile The file being scanned.
      * @param int $pointer The position of the current token in the stack passed in $tokens.
      * @return void
      */
-    public function process(PHP_CodeSniffer_File $phpcsFile, $pointer)
+    public function process(File $phpcsFile, $pointer)
     {
         if (!static::isImportNamespaceUse($phpcsFile, $pointer)) {
             return;
@@ -80,11 +80,11 @@ class UseDeclarationSpacingSniff implements PHP_CodeSniffer_Sniff
     }
 
     /**
-     * @param PHP_CodeSniffer_File $phpcsFile The file being scanned.
+     * @param File $phpcsFile The file being scanned.
      * @param int $pointer The position of the current token in the stack passed in $tokens.
      * @return bool
      */
-    public static function isImportNamespaceUse(PHP_CodeSniffer_File $phpcsFile, int $pointer): bool
+    public static function isImportNamespaceUse(File $phpcsFile, int $pointer): bool
     {
         $tokens = $phpcsFile->getTokens();
 

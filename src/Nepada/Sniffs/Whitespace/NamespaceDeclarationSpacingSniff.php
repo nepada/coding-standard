@@ -8,14 +8,14 @@ declare(strict_types = 1);
 
 namespace Nepada\Sniffs\Whitespace;
 
-use PHP_CodeSniffer_File;
-use PHP_CodeSniffer_Sniff;
+use PHP_CodeSniffer\Files\File;
+use PHP_CodeSniffer\Sniffs\Sniff;
 
 
 /**
  * Ensure spacing between namespace declaration and import statements/rest of the code.
  */
-class NamespaceDeclarationSpacingSniff implements PHP_CodeSniffer_Sniff
+class NamespaceDeclarationSpacingSniff implements Sniff
 {
 
     /** @var int */
@@ -39,11 +39,11 @@ class NamespaceDeclarationSpacingSniff implements PHP_CodeSniffer_Sniff
      * TODO: add scalar typehints
      *
      * @phpcsSuppress SlevomatCodingStandard.TypeHints.TypeHintDeclaration.MissingParameterTypeHint
-     * @param PHP_CodeSniffer_File $phpcsFile The file being scanned.
+     * @param File $phpcsFile The file being scanned.
      * @param int $pointer The position of the current token in the stack passed in $tokens.
      * @return void
      */
-    public function process(PHP_CodeSniffer_File $phpcsFile, $pointer)
+    public function process(File $phpcsFile, $pointer)
     {
         $tokens = $phpcsFile->getTokens();
 
