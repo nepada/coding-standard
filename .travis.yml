@@ -10,20 +10,26 @@ env:
     - COMPOSER_ARGS="--prefer-stable"
     - COMPOSER_ARGS="--prefer-stable --prefer-lowest"
 
-matrix:
+jobs:
+    include:
+        -   stage: Code Standard Checker
+            php: 7.0
+            install:
+                - travis_retry composer update --no-interaction --prefer-dist $COMPOSER_ARGS
+                - sed -i "s#../../../../#../../vendor/#" src/Nepada/ruleset.xml
+            script:
+                - vendor/bin/phpcs --standard=src/Nepada/ruleset.xml --encoding=utf-8 -sp src tests
     allow_failures:
-        - php: 7.2
+        -   php: 7.2
 
 install:
+    - travis_retry composer create-project --no-interaction jakub-onderka/php-parallel-lint /tmp/php-parallel-lint ^0.9
+    - travis_retry composer create-project --no-interaction phpstan/phpstan-shim /tmp/phpstan ^0.7
     - travis_retry composer update --no-interaction --prefer-dist $COMPOSER_ARGS
 
-before_script:
-    - sed -i "s#../../../../#../../vendor/#" src/Nepada/ruleset.xml
-
 script:
-    - vendor/bin/parallel-lint src
-    - vendor/bin/phpcs --standard=src/Nepada/ruleset-php70.xml --encoding=utf-8 -s src
-    - vendor/bin/phpstan analyse -c tests/phpstan.neon -l 7 src
+    - /tmp/php-parallel-lint/parallel-lint -e php,phpt --exclude tests/temp src tests
+    - /tmp/phpstan/phpstan.phar analyse -c tests/phpstan.neon -l 7 src tests
 
 sudo: false
 
