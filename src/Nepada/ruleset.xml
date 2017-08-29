@@ -16,6 +16,8 @@
         <exclude name="SlevomatCodingStandard.Namespaces.FullyQualifiedClassNameInAnnotation"/><!-- we don't use FQN -->
         <exclude name="SlevomatCodingStandard.Namespaces.FullyQualifiedClassNameAfterKeyword"/><!-- we don't use FQN -->
         <exclude name="SlevomatCodingStandard.Namespaces.FullyQualifiedExceptions"/><!-- we don't use FQN -->
+        <exclude name="SlevomatCodingStandard.Namespaces.FullyQualifiedGlobalConstants"/><!-- we don't use FQN -->
+        <exclude name="SlevomatCodingStandard.Namespaces.FullyQualifiedGlobalFunctions"/><!-- we don't use FQN -->
         <exclude name="SlevomatCodingStandard.Namespaces.UseOnlyWhitelistedNamespaces"/><!-- no hard restrictions on NS -->
         <exclude name="SlevomatCodingStandard.TypeHints.TypeHintDeclaration.UselessParameterAnnotation"/><!-- keep all PHPdoc blocks -->
         <exclude name="SlevomatCodingStandard.TypeHints.TypeHintDeclaration.UselessReturnAnnotation"/><!-- keep all PHPdoc blocks -->
