@@ -1,7 +1,6 @@
 language: php
 
 php:
-    - 7.0
     - 7.1
     - 7.2
 
@@ -13,14 +12,12 @@ env:
 jobs:
     include:
         -   stage: Code Standard Checker
-            php: 7.0
+            php: 7.1
             install:
                 - travis_retry composer update --no-interaction --prefer-dist $COMPOSER_ARGS
                 - sed -i "s#../../../../#../../vendor/#" src/Nepada/ruleset.xml
             script:
                 - vendor/bin/phpcs --standard=src/Nepada/ruleset.xml --encoding=utf-8 -sp src tests
-    allow_failures:
-        -   php: 7.2
 
 install:
     - travis_retry composer create-project --no-interaction jakub-onderka/php-parallel-lint /tmp/php-parallel-lint ^0.9

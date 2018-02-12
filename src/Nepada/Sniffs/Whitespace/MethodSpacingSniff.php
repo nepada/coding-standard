@@ -35,9 +35,8 @@ class MethodSpacingSniff extends AbstractScopeSniff
     }
 
     /**
-     * TODO: add scalar typehints
-     *
      * @phpcsSuppress SlevomatCodingStandard.TypeHints.TypeHintDeclaration.MissingParameterTypeHint
+     * @phpcsSuppress SlevomatCodingStandard.TypeHints.TypeHintDeclaration.MissingReturnTypeHint
      * @param File $phpcsFile The file being scanned.
      * @param int $pointer The position of the current token in the stack passed in $tokens.
      * @param int $scopePointer The current scope opener token.
@@ -49,9 +48,8 @@ class MethodSpacingSniff extends AbstractScopeSniff
     }
 
     /**
-     * TODO: add scalar typehints
-     *
      * @phpcsSuppress SlevomatCodingStandard.TypeHints.TypeHintDeclaration.MissingParameterTypeHint
+     * @phpcsSuppress SlevomatCodingStandard.TypeHints.TypeHintDeclaration.MissingReturnTypeHint
      * @param File $phpcsFile
      * @param int $pointer
      */
@@ -64,7 +62,7 @@ class MethodSpacingSniff extends AbstractScopeSniff
      * @param int $pointer The position of the current token in the stack passed in $tokens.
      * @param int $scopePointer The current scope opener token.
      */
-    private function checkSpacingBeforeFunction(File $phpcsFile, int $pointer, int $scopePointer)
+    private function checkSpacingBeforeFunction(File $phpcsFile, int $pointer, int $scopePointer): void
     {
         $tokens = $phpcsFile->getTokens();
         $expectedSpacing = $this->regularSpacing;
@@ -148,7 +146,7 @@ class MethodSpacingSniff extends AbstractScopeSniff
      * @param File $phpcsFile The file being scanned.
      * @param int $pointer The position of the current token in the stack passed in $tokens.
      */
-    private function checkSpacingAfterFunction(File $phpcsFile, int $pointer)
+    private function checkSpacingAfterFunction(File $phpcsFile, int $pointer): void
     {
         $tokens = $phpcsFile->getTokens();
         $expectedSpacing = $this->regularSpacing;

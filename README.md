@@ -27,14 +27,12 @@ You can either use the ruleset as-is, or customize it to suit your needs:
 <?xml version="1.0"?>
 <ruleset name="FooProject">
 	<rule ref="vendor/nepada/coding-standard/src/Nepada/ruleset.xml"/>
-	<!-- <rule ref="vendor/nepada/coding-standard/src/Nepada/ruleset-php70.xml"/> if you want to explicitly disable checks for PHP >= 7.1 features -->
 	<!-- additional settings -->
 </ruleset>
 ```
 
-To check your code base for violations, run `PHP-Parallel-Lint` and `PHP_CodeSniffer` from the command line:
+To check your code base for violations, run PHP CodeSniffer from the command line:
 
 ```
-vendor/bin/parallel-lint src tests
 vendor/bin/phpcs --standard=ruleset.xml --encoding=utf-8 -sp src tests
 ```
