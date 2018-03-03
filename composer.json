@@ -1,6 +1,6 @@
 {
     "name": "nepada/coding-standard",
-    "type": "library",
+    "type": "phpcodesniffer-standard",
     "license": "BSD-3-Clause",
     "description": "Nepada coding standard.",
     "support": {
