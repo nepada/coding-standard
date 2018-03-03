@@ -48,7 +48,7 @@
     <rule ref="SlevomatCodingStandard.Namespaces.UnusedUses">
         <properties>
             <property name="searchAnnotations" value="true"/>
-            <property name="ignoredAnnotationNames" type="array" value=",@persistent,@secured,@loggedIn,@role,@allowed,@testCase,@dataProvider"/>
+            <property name="ignoredAnnotationNames" type="array" value="@persistent,@secured,@loggedIn,@role,@allowed,@testCase,@dataProvider"/>
         </properties>
     </rule>
     <rule ref="SlevomatCodingStandard.PHP.TypeCast"/>
@@ -57,7 +57,11 @@
             <property name="newlinesCountBetweenOpenTagAndDeclare" value="1"/>
         </properties>
     </rule>
-    <rule ref="SlevomatCodingStandard.TypeHints.TypeHintDeclaration"/>
+    <rule ref="SlevomatCodingStandard.TypeHints.TypeHintDeclaration">
+        <properties>
+            <property name="usefulAnnotations" type="array" value="@throws,@secured,@loggedIn,@role,@allowed,@dataProvider"/>
+        </properties>
+    </rule>
 
     <!-- allow grouping of exception in one file -->
     <rule ref="PSR1.Classes.ClassDeclaration.MultipleClasses">
