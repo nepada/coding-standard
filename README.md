@@ -34,5 +34,5 @@ You can either use the ruleset as-is, or customize it to suit your needs:
 To check your code base for violations, run PHP CodeSniffer from the command line:
 
 ```
-vendor/bin/phpcs --standard=ruleset.xml --encoding=utf-8 -sp src tests
+vendor/bin/phpcs --standard=ruleset.xml -sp src tests
 ```
