@@ -15,7 +15,6 @@ jobs:
             php: 7.1
             install:
                 - travis_retry composer update --no-interaction --prefer-dist $COMPOSER_ARGS
-                - sed -i "s#../../../../#../../vendor/#" src/Nepada/ruleset.xml
             script:
                 - vendor/bin/phpcs --standard=src/Nepada/ruleset.xml --encoding=utf-8 -sp src tests
 

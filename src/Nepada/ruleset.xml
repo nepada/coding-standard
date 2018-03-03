@@ -2,30 +2,20 @@
 <ruleset name="Nepada Coding Standard">
     <arg name="extensions" value="php,phpt"/>
 
-    <rule ref="../../../../consistence/coding-standard/Consistence/ruleset.xml">
+    <config name="installed_paths" value="../../consistence/coding-standard"/><!-- relative path from PHPCS source location -->
+
+    <rule ref="Consistence">
         <exclude name="Consistence.Exceptions.ExceptionDeclaration.IncorrectExceptionDirectory"/><!-- we place exceptions into a single exceptions.php file -->
         <exclude name="Generic.Commenting.Todo"/><!-- allow TODO comments -->
         <exclude name="Generic.WhiteSpace.DisallowSpaceIndent"/><!-- we use spaces instead of tabs -->
         <exclude name="PSR2.Namespaces.NamespaceDeclaration.BlankLineAfter"/><!-- too strict, we use 2 lines to separate namespace/use AND class/function -->
         <exclude name="PSR2.Namespaces.UseDeclaration.SpaceAfterLastUse"/><!-- too strict, we use 2 lines to separate namespace/use AND class/function -->
+        <exclude name="SlevomatCodingStandard.Namespaces.FullyQualifiedClassNameAfterKeyword"/><!-- we don't use FQN -->
+        <exclude name="SlevomatCodingStandard.Namespaces.FullyQualifiedClassNameInAnnotation"/><!-- we don't use FQN -->
+        <exclude name="SlevomatCodingStandard.Namespaces.FullyQualifiedExceptions"/><!-- we don't use FQN -->
+        <exclude name="SlevomatCodingStandard.Namespaces.UnusedUses.MismatchingCaseSensitivity"/><!-- see slevomat/coding-standard#278 -->
         <exclude name="Squiz.Strings.DoubleQuoteUsage.ContainsVar"/><!-- we do not strictly require sprintf -->
         <exclude name="Squiz.WhiteSpace.FunctionSpacing"/><!-- we use 2 blank lines to separate attributes and methods - replaced by our sniff -->
-    </rule>
-    <rule ref="../../../../slevomat/coding-standard/SlevomatCodingStandard/ruleset.xml">
-        <exclude name="SlevomatCodingStandard.ControlStructures.DisallowEqualOperators"/><!-- allow use of == and != -->
-        <exclude name="SlevomatCodingStandard.ControlStructures.EarlyExit"/><!-- we don't strictly enforce early exit -->
-        <exclude name="SlevomatCodingStandard.ControlStructures.RequireYodaComparison"/>
-        <exclude name="SlevomatCodingStandard.Files.TypeNameMatchesFileName"/><!-- because of PSR-4 -->
-        <exclude name="SlevomatCodingStandard.Namespaces.FullyQualifiedClassNameInAnnotation"/><!-- we don't use FQN -->
-        <exclude name="SlevomatCodingStandard.Namespaces.FullyQualifiedClassNameAfterKeyword"/><!-- we don't use FQN -->
-        <exclude name="SlevomatCodingStandard.Namespaces.FullyQualifiedExceptions"/><!-- we don't use FQN -->
-        <exclude name="SlevomatCodingStandard.Namespaces.FullyQualifiedGlobalConstants"/><!-- we don't use FQN -->
-        <exclude name="SlevomatCodingStandard.Namespaces.FullyQualifiedGlobalFunctions"/><!-- we don't use FQN -->
-        <exclude name="SlevomatCodingStandard.Namespaces.UnusedUses.MismatchingCaseSensitivity"/><!-- see slevomat/coding-standard#278 -->
-        <exclude name="SlevomatCodingStandard.Namespaces.UseOnlyWhitelistedNamespaces"/><!-- no hard restrictions on NS -->
-        <exclude name="SlevomatCodingStandard.TypeHints.TypeHintDeclaration.UselessParameterAnnotation"/><!-- keep all PHPdoc blocks -->
-        <exclude name="SlevomatCodingStandard.TypeHints.TypeHintDeclaration.UselessReturnAnnotation"/><!-- keep all PHPdoc blocks -->
-        <exclude name="SlevomatCodingStandard.TypeHints.TypeHintDeclaration.UselessDocComment"/><!-- keep all PHPdoc blocks -->
     </rule>
 
     <rule ref="Generic.CodeAnalysis.JumbledIncrementer"/>
@@ -42,11 +32,10 @@
             <property name="tabIndent" value="false"/>
         </properties>
     </rule>
-    <rule ref="SlevomatCodingStandard.Namespaces.UnusedUses">
-        <properties>
-            <property name="searchAnnotations" value="true"/>
-        </properties>
-    </rule>
+    <rule ref="SlevomatCodingStandard.ControlStructures.AssignmentInCondition"/>
+    <rule ref="SlevomatCodingStandard.ControlStructures.LanguageConstructWithParentheses"/>
+    <rule ref="SlevomatCodingStandard.ControlStructures.NewWithParentheses"/>
+    <rule ref="SlevomatCodingStandard.ControlStructures.RequireNullCoalesceOperator"/>
     <rule ref="SlevomatCodingStandard.Namespaces.ReferenceUsedNamesOnly">
         <properties>
             <property name="allowFullyQualifiedExceptions" value="false"/>
@@ -55,10 +44,20 @@
             <property name="fullyQualifiedKeywords" type="array" value=""/>
         </properties>
     </rule>
+    <rule ref="SlevomatCodingStandard.Namespaces.UnusedUses">
+        <properties>
+            <property name="searchAnnotations" value="true"/>
+        </properties>
+    </rule>
     <rule ref="SlevomatCodingStandard.TypeHints.DeclareStrictTypes">
         <properties>
             <property name="newlinesCountBetweenOpenTagAndDeclare" value="1"/>
         </properties>
+    </rule>
+    <rule ref="SlevomatCodingStandard.TypeHints.TypeHintDeclaration">
+        <exclude name="SlevomatCodingStandard.TypeHints.TypeHintDeclaration.UselessParameterAnnotation"/><!-- keep all PHPdoc blocks -->
+        <exclude name="SlevomatCodingStandard.TypeHints.TypeHintDeclaration.UselessReturnAnnotation"/><!-- keep all PHPdoc blocks -->
+        <exclude name="SlevomatCodingStandard.TypeHints.TypeHintDeclaration.UselessDocComment"/><!-- keep all PHPdoc blocks -->
     </rule>
 
     <!-- allow grouping of exception in one file -->
