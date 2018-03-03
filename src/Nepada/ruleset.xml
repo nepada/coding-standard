@@ -79,7 +79,4 @@
         <exclude-pattern>*.phpt</exclude-pattern>
         <exclude-pattern>*/tests/bootstrap.php</exclude-pattern>
     </rule>
-    <rule ref="SlevomatCodingStandard.Namespaces.ReferenceUsedNamesOnly.ReferenceViaFullyQualifiedName">
-        <exclude-pattern>*.phpt</exclude-pattern>
-    </rule>
 </ruleset>
