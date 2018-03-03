@@ -49,7 +49,7 @@
     <rule ref="SlevomatCodingStandard.Namespaces.UnusedUses">
         <properties>
             <property name="searchAnnotations" value="true"/>
-            <property name="ignoredAnnotationNames" type="array" value="@testCase"/>
+            <property name="ignoredAnnotationNames" type="array" value=",@persistent,@secured,@loggedIn,@role,@allowed,@testCase,@dataProvider"/>
         </properties>
     </rule>
     <rule ref="SlevomatCodingStandard.PHP.TypeCast"/>
