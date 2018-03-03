@@ -14,7 +14,6 @@
         <exclude name="SlevomatCodingStandard.Namespaces.FullyQualifiedClassNameInAnnotation"/><!-- we don't use FQN -->
         <exclude name="SlevomatCodingStandard.Namespaces.FullyQualifiedExceptions"/><!-- we don't use FQN -->
         <exclude name="Squiz.Strings.DoubleQuoteUsage.ContainsVar"/><!-- we do not strictly require sprintf -->
-        <exclude name="Squiz.WhiteSpace.FunctionSpacing"/><!-- we use 2 blank lines to separate attributes and methods - replaced by our sniff -->
     </rule>
 
     <rule ref="Generic.CodeAnalysis.JumbledIncrementer"/>
