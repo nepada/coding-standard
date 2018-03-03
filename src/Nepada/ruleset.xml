@@ -3,7 +3,7 @@
     <arg name="extensions" value="php,phpt"/>
 
     <rule ref="../../../../consistence/coding-standard/Consistence/ruleset.xml">
-        <exclude name="Consistence.Exceptions.ExceptionDeclaration.IncorrectExceptionDirectory"/>
+        <exclude name="Consistence.Exceptions.ExceptionDeclaration.IncorrectExceptionDirectory"/><!-- we place exceptions into a single exceptions.php file -->
         <exclude name="Generic.Commenting.Todo"/><!-- allow TODO comments -->
         <exclude name="Generic.WhiteSpace.DisallowSpaceIndent"/><!-- we use spaces instead of tabs -->
         <exclude name="PSR2.Namespaces.NamespaceDeclaration.BlankLineAfter"/><!-- too strict, we use 2 lines to separate namespace/use AND class/function -->
