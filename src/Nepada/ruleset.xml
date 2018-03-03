@@ -59,11 +59,7 @@
             <property name="newlinesCountBetweenOpenTagAndDeclare" value="1"/>
         </properties>
     </rule>
-    <rule ref="SlevomatCodingStandard.TypeHints.TypeHintDeclaration">
-        <exclude name="SlevomatCodingStandard.TypeHints.TypeHintDeclaration.UselessParameterAnnotation"/><!-- keep all PHPdoc blocks -->
-        <exclude name="SlevomatCodingStandard.TypeHints.TypeHintDeclaration.UselessReturnAnnotation"/><!-- keep all PHPdoc blocks -->
-        <exclude name="SlevomatCodingStandard.TypeHints.TypeHintDeclaration.UselessDocComment"/><!-- keep all PHPdoc blocks -->
-    </rule>
+    <rule ref="SlevomatCodingStandard.TypeHints.TypeHintDeclaration"/>
 
     <!-- allow grouping of exception in one file -->
     <rule ref="PSR1.Classes.ClassDeclaration.MultipleClasses">
