@@ -16,7 +16,7 @@ jobs:
             install:
                 - travis_retry composer update --no-interaction --prefer-dist $COMPOSER_ARGS
             script:
-                - vendor/bin/phpcs --standard=src/Nepada/ruleset.xml --encoding=utf-8 -sp src tests
+                - vendor/bin/phpcs --standard=src/Nepada/ruleset.xml -sp src tests
 
 install:
     - travis_retry composer create-project --no-interaction jakub-onderka/php-parallel-lint /tmp/php-parallel-lint ^1.0
