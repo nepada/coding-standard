@@ -14,7 +14,6 @@
         <exclude name="SlevomatCodingStandard.Namespaces.FullyQualifiedClassNameAfterKeyword"/><!-- we don't use FQN -->
         <exclude name="SlevomatCodingStandard.Namespaces.FullyQualifiedClassNameInAnnotation"/><!-- we don't use FQN -->
         <exclude name="SlevomatCodingStandard.Namespaces.FullyQualifiedExceptions"/><!-- we don't use FQN -->
-        <exclude name="SlevomatCodingStandard.Namespaces.UnusedUses.MismatchingCaseSensitivity"/><!-- see slevomat/coding-standard#278 -->
         <exclude name="Squiz.Strings.DoubleQuoteUsage.ContainsVar"/><!-- we do not strictly require sprintf -->
         <exclude name="Squiz.WhiteSpace.FunctionSpacing"/><!-- we use 2 blank lines to separate attributes and methods - replaced by our sniff -->
     </rule>
@@ -33,6 +32,9 @@
             <property name="tabIndent" value="false"/>
         </properties>
     </rule>
+    <rule ref="SlevomatCodingStandard.Commenting.DocCommentSpacing"/>
+    <rule ref="SlevomatCodingStandard.Commenting.EmptyComment"/>
+    <rule ref="SlevomatCodingStandard.Commenting.RequireOneLinePropertyDocComment"/>
     <rule ref="SlevomatCodingStandard.ControlStructures.AssignmentInCondition"/>
     <rule ref="SlevomatCodingStandard.ControlStructures.LanguageConstructWithParentheses"/>
     <rule ref="SlevomatCodingStandard.ControlStructures.NewWithParentheses"/>
@@ -48,8 +50,10 @@
     <rule ref="SlevomatCodingStandard.Namespaces.UnusedUses">
         <properties>
             <property name="searchAnnotations" value="true"/>
+            <property name="ignoredAnnotationNames" type="array" value="@testCase"/>
         </properties>
     </rule>
+    <rule ref="SlevomatCodingStandard.PHP.TypeCast"/>
     <rule ref="SlevomatCodingStandard.TypeHints.DeclareStrictTypes">
         <properties>
             <property name="newlinesCountBetweenOpenTagAndDeclare" value="1"/>
