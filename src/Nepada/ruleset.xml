@@ -13,6 +13,9 @@
         <exclude name="Squiz.Strings.DoubleQuoteUsage.ContainsVar"/><!-- we do not strictly require sprintf -->
     </rule>
 
+    <rule ref="Generic.CodeAnalysis.AssignmentInCondition">
+        <exclude name="Generic.CodeAnalysis.AssignmentInCondition.FoundInWhileCondition"/>
+    </rule>
     <rule ref="Generic.CodeAnalysis.JumbledIncrementer"/>
     <rule ref="Generic.CodeAnalysis.UselessOverridingMethod"/>
     <rule ref="Generic.Formatting.MultipleStatementAlignment">
@@ -28,6 +31,7 @@
             <property name="tabIndent" value="false"/>
         </properties>
     </rule>
+    <rule ref="PSR12.Operators.OperatorSpacing"/>
     <rule ref="SlevomatCodingStandard.Commenting.DocCommentSpacing"/>
     <rule ref="SlevomatCodingStandard.ControlStructures.AssignmentInCondition"/>
     <rule ref="SlevomatCodingStandard.ControlStructures.DisallowEqualOperators"/>
@@ -38,13 +42,21 @@
             <property name="allowFullyQualifiedExceptions" value="false"/>
             <property name="allowFullyQualifiedGlobalClasses" value="true"/>
             <property name="allowPartialUses" value="true"/>
-            <property name="fullyQualifiedKeywords" type="array" value=""/>
+            <property name="fullyQualifiedKeywords" type="array"/>
         </properties>
     </rule>
     <rule ref="SlevomatCodingStandard.Namespaces.UnusedUses">
         <properties>
             <property name="searchAnnotations" value="true"/>
-            <property name="ignoredAnnotationNames" type="array" value="@persistent,@secured,@loggedIn,@role,@allowed,@testCase,@dataProvider"/>
+            <property name="ignoredAnnotationNames" type="array">
+                <element value="@persistent"/>
+                <element value="@secured"/>
+                <element value="@loggedIn"/>
+                <element value="@role"/>
+                <element value="@allowed"/>
+                <element value="@testCase"/>
+                <element value="@dataProvider"/>
+            </property>
         </properties>
     </rule>
     <rule ref="SlevomatCodingStandard.TypeHints.DeclareStrictTypes">
