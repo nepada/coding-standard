@@ -66,7 +66,10 @@
     </rule>
     <rule ref="SlevomatCodingStandard.TypeHints.TypeHintDeclaration">
         <properties>
-            <property name="allAnnotationsAreUseful" value="true"/>
+            <property name="traversableTypeHints" type="array">
+                <element value="Traversable"/>
+                <element value="Doctrine\Common\Collections\Collection"/>
+            </property>
         </properties>
     </rule>
 
