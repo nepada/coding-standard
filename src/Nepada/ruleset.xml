@@ -37,10 +37,12 @@
     <rule ref="SlevomatCodingStandard.Classes.TraitUseSpacing"/>
     <rule ref="SlevomatCodingStandard.Commenting.DocCommentSpacing"/>
     <rule ref="SlevomatCodingStandard.ControlStructures.AssignmentInCondition"/>
+    <rule ref="SlevomatCodingStandard.ControlStructures.DisallowContinueWithoutIntegerOperandInSwitch"/>
     <rule ref="SlevomatCodingStandard.ControlStructures.DisallowEqualOperators"/>
     <rule ref="SlevomatCodingStandard.ControlStructures.RequireNullCoalesceOperator"/>
     <rule ref="SlevomatCodingStandard.ControlStructures.RequireShortTernaryOperator"/>
     <rule ref="SlevomatCodingStandard.Functions.UnusedInheritedVariablePassedToClosure"/>
+    <rule ref="SlevomatCodingStandard.Functions.UselessParameterDefaultValue"/>
     <rule ref="SlevomatCodingStandard.Namespaces.ReferenceUsedNamesOnly">
         <properties>
             <property name="allowFullyQualifiedExceptions" value="false"/>
@@ -79,6 +81,7 @@
             </property>
         </properties>
     </rule>
+    <rule ref="SlevomatCodingStandard.Variables.DuplicateAssignmentToVariable"/>
 
     <!-- allow grouping of exception in one file -->
     <rule ref="PSR1.Classes.ClassDeclaration.MultipleClasses">
