@@ -17,14 +17,14 @@ jobs:
             install:
                 - travis_retry composer update --no-interaction --prefer-dist $COMPOSER_ARGS
             script:
-                - vendor/bin/phpcs --standard=src/Nepada/ruleset.xml -sp src tests
+                - vendor/bin/phpcs --standard=src/Nepada/ruleset.xml -sp src
 
 install:
     - travis_retry composer update --no-interaction --prefer-dist $COMPOSER_ARGS
 
 script:
 #    - vendor/bin/parallel-lint -e php,phpt --exclude tests/temp src tests
-    - vendor/bin/phpstan.phar analyse -c tests/phpstan.neon -l max src tests
+    - vendor/bin/phpstan.phar analyse src
 
 sudo: false
 
