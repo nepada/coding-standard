@@ -1,7 +1,5 @@
 <?xml version="1.0"?>
 <ruleset name="Nepada Coding Standard">
-    <arg name="extensions" value="php,phpt"/>
-
     <config name="installed_paths" value="../../consistence/coding-standard"/><!-- relative path from PHPCS source location -->
 
     <rule ref="Consistence">
@@ -57,15 +55,6 @@
     <rule ref="SlevomatCodingStandard.Namespaces.UnusedUses">
         <properties>
             <property name="searchAnnotations" value="true"/>
-            <property name="ignoredAnnotationNames" type="array">
-                <element value="@persistent"/>
-                <element value="@secured"/>
-                <element value="@loggedIn"/>
-                <element value="@role"/>
-                <element value="@allowed"/>
-                <element value="@testCase"/>
-                <element value="@dataProvider"/>
-            </property>
         </properties>
     </rule>
     <rule ref="SlevomatCodingStandard.Namespaces.UselessAlias"/>
@@ -80,7 +69,6 @@
         <properties>
             <property name="traversableTypeHints" type="array">
                 <element value="Traversable"/>
-                <element value="Doctrine\Common\Collections\Collection"/>
             </property>
         </properties>
     </rule>
@@ -98,16 +86,5 @@
     </rule>
     <rule ref="Squiz.Classes.ClassFileName.NoMatch">
         <exclude-pattern>*/exceptions.php</exclude-pattern>
-    </rule>
-
-    <!-- special settings for tests and bootstrap -->
-    <exclude-pattern>*/tests/temp/*</exclude-pattern>
-    <rule ref="PSR1.Files.SideEffects">
-        <exclude-pattern>*.phpt</exclude-pattern>
-        <exclude-pattern>*/bootstrap.php</exclude-pattern>
-    </rule>
-    <rule ref="Squiz.Functions.GlobalFunction">
-        <exclude-pattern>*.phpt</exclude-pattern>
-        <exclude-pattern>*/tests/bootstrap.php</exclude-pattern>
     </rule>
 </ruleset>
