@@ -25,14 +25,22 @@ You can either use the ruleset as-is, or customize it to suit your needs:
 
 ```xml
 <?xml version="1.0"?>
-<ruleset name="FooProject">
-	<rule ref="vendor/nepada/coding-standard/src/Nepada/ruleset.xml"/>
-	<!-- additional settings -->
+<ruleset>
+    <config name="installed_paths" value="../../nepada/coding-standard/src"/><!-- relative path from PHPCS source location -->
+
+    <arg value="ps"/><!-- show progress of the run, show sniff names -->
+    <arg name="cache" value=".phpcs-cache"/>
+
+    <file>src</file>
+    <file>tests</file>
+
+    <rule ref="Nepada">
+    </rule>
 </ruleset>
 ```
 
 To check your code base for violations, run PHP CodeSniffer from the command line:
 
 ```
-vendor/bin/phpcs --standard=ruleset.xml -sp src tests
+vendor/bin/phpcs
 ```
