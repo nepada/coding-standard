@@ -23,6 +23,7 @@
             <property name="error" value="true"/>
         </properties>
     </rule>
+    <rule ref="Generic.Formatting.SpaceAfterNot"/>
     <rule ref="Generic.PHP.DiscourageGoto"/>
     <rule ref="Generic.WhiteSpace.DisallowTabIndent"/>
     <rule ref="Generic.WhiteSpace.IncrementDecrementSpacing"/>
