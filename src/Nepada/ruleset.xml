@@ -32,6 +32,14 @@
             <property name="tabIndent" value="false"/>
         </properties>
     </rule>
+    <rule ref="PSR12.Classes.AnonClassDeclaration">
+        <exclude name="PSR12.Classes.AnonClassDeclaration.CloseBraceAfterBody"/>
+    </rule>
+    <rule ref="PSR12.Classes.ClosingBrace"/>
+    <rule ref="PSR12.ControlStructures.BooleanOperatorPlacement"/>
+    <rule ref="PSR12.ControlStructures.ControlStructureSpacing"/>
+    <rule ref="PSR12.Files.ImportStatement"/>
+    <rule ref="PSR12.Files.OpenTag"/>
     <rule ref="PSR12.Functions.NullableTypeDeclaration"/>
     <rule ref="PSR12.Operators.OperatorSpacing"/>
     <rule ref="SlevomatCodingStandard.Classes.ModernClassNameReference"/>
