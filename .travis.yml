@@ -11,21 +11,11 @@ env:
     - COMPOSER_ARGS="--prefer-stable"
     - COMPOSER_ARGS="--prefer-stable --prefer-lowest"
 
-jobs:
-    include:
-        -   stage: Code Standard Checker
-            php: 7.1
-            install:
-                - travis_retry composer update --no-interaction --prefer-dist $COMPOSER_ARGS
-            script:
-                - vendor/bin/phpcs
-
 install:
     - travis_retry composer update --no-interaction --prefer-dist $COMPOSER_ARGS
 
 script:
-#    - vendor/bin/parallel-lint -e php,phpt --exclude tests/temp src tests
-    - vendor/bin/phpstan.phar analyse
+    - vendor/bin/phpcs
 
 sudo: false
 
