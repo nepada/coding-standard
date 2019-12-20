@@ -7,7 +7,6 @@ php:
     - 7.4
 
 env:
-    - COMPOSER_ARGS=""
     - COMPOSER_ARGS="--prefer-stable"
     - COMPOSER_ARGS="--prefer-stable --prefer-lowest"
 
