@@ -80,13 +80,6 @@
         </properties>
     </rule>
     <rule ref="SlevomatCodingStandard.TypeHints.NullTypeHintOnLastPosition"/>
-    <rule ref="SlevomatCodingStandard.TypeHints.TypeHintDeclaration">
-        <properties>
-            <property name="traversableTypeHints" type="array">
-                <element value="Traversable"/>
-            </property>
-        </properties>
-    </rule>
     <rule ref="SlevomatCodingStandard.Variables.DuplicateAssignmentToVariable"/>
     <rule ref="Squiz.WhiteSpace.FunctionSpacing.After"><!-- restore original severity of excluded rule -->
         <severity>5</severity>
