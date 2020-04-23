@@ -110,7 +110,11 @@
     </rule>
     <rule ref="SlevomatCodingStandard.TypeHints.NullTypeHintOnLastPosition"/>
     <rule ref="SlevomatCodingStandard.Variables.DuplicateAssignmentToVariable"/>
-    <rule ref="SlevomatCodingStandard.Whitespaces.DuplicateSpaces"/>
+    <rule ref="SlevomatCodingStandard.Whitespaces.DuplicateSpaces">
+        <properties>
+            <property name="ignoreSpacesInAnnotation" value="true"/><!-- allow indentation in annotations for e.g. Doctrine -->
+        </properties>
+    </rule>
     <rule ref="Squiz.WhiteSpace.FunctionSpacing.After"><!-- restore original severity of excluded rule -->
         <severity>5</severity>
     </rule>
