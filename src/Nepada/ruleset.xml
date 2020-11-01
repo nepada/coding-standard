@@ -144,6 +144,7 @@
     <rule ref="SlevomatCodingStandard.Namespaces.NamespaceSpacing"/>
     <rule ref="SlevomatCodingStandard.Namespaces.ReferenceUsedNamesOnly">
         <properties>
+            <property name="searchAnnotations" value="true"/>
             <property name="allowFullyQualifiedGlobalClasses" value="true"/>
         </properties>
     </rule>
