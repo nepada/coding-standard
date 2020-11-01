@@ -84,6 +84,7 @@
     <rule ref="SlevomatCodingStandard.Arrays.SingleLineArrayWhitespace"/>
     <rule ref="SlevomatCodingStandard.Arrays.TrailingArrayComma"/>
     <rule ref="SlevomatCodingStandard.Classes.ClassConstantVisibility"/>
+    <rule ref="SlevomatCodingStandard.Classes.ClassMemberSpacing"/>
     <rule ref="SlevomatCodingStandard.Classes.ClassStructure">
         <properties>
             <property name="enableFinalMethods" value="true"/>
@@ -160,6 +161,7 @@
     <rule ref="SlevomatCodingStandard.Numbers.RequireNumericLiteralSeparator"/>
     <rule ref="SlevomatCodingStandard.Operators.DisallowEqualOperators"/>
     <rule ref="SlevomatCodingStandard.Operators.NegationOperatorSpacing"/>
+    <rule ref="SlevomatCodingStandard.Operators.RequireOnlyStandaloneIncrementAndDecrementOperators"/>
     <rule ref="SlevomatCodingStandard.Operators.SpreadOperatorSpacing"/>
     <rule ref="SlevomatCodingStandard.PHP.ReferenceSpacing"/>
     <rule ref="SlevomatCodingStandard.PHP.RequireNowdoc"/>
@@ -176,7 +178,7 @@
     <rule ref="SlevomatCodingStandard.TypeHints.NullTypeHintOnLastPosition"/>
     <rule ref="SlevomatCodingStandard.TypeHints.ParameterTypeHintSpacing"/>
     <rule ref="SlevomatCodingStandard.TypeHints.ParameterTypeHint">
-        <exclude name="SlevomatCodingStandard.TypeHints.ParameterTypeHint.UselessAnnotation"/>
+        <exclude name="SlevomatCodingStandard.TypeHints.ParameterTypeHint.UselessAnnotation"/><!-- we don't want partial doc blocks -->
         <properties>
             <property name="traversableTypeHints" type="array">
                 <element value="Traversable"/>
@@ -192,7 +194,7 @@
     </rule>
     <rule ref="SlevomatCodingStandard.TypeHints.PropertyTypeHintSpacing"/>
     <rule ref="SlevomatCodingStandard.TypeHints.ReturnTypeHint">
-        <exclude name="SlevomatCodingStandard.TypeHints.ReturnTypeHint.UselessAnnotation"/>
+        <exclude name="SlevomatCodingStandard.TypeHints.ReturnTypeHint.UselessAnnotation"/><!-- we don't want partial doc blocks -->
         <properties>
             <property name="traversableTypeHints" type="array">
                 <element value="Traversable"/>
