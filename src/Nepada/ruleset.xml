@@ -2,6 +2,34 @@
 <ruleset name="Nepada Coding Standard">
     <config name="installed_paths" value="../../slevomat/coding-standard"/><!-- relative path from PHPCS source location -->
 
+    <rule ref="PSR12">
+        <exclude name="Generic.Files.LineLength"/><!-- no hard limit on line length -->
+        <exclude name="PSR2.Classes.ClassDeclaration.CloseBraceAfterBody"/><!-- we want 1 blank line before brace -->
+        <exclude name="PSR12.Classes.AnonClassDeclaration.CloseBraceAfterBody"/><!-- we want 1 blank line before brace -->
+        <exclude name="PSR12.Files.DeclareStatement.SpaceFoundAfterDirective"/><!-- we use space in declare statement -->
+        <exclude name="PSR12.Files.DeclareStatement.SpaceFoundBeforeDirectiveValue"/><!-- we use space in declare statement -->
+        <exclude name="PSR12.Files.FileHeader.SpacingAfterBlock"/><!-- interferes with declare statement on first line -->
+        <exclude name="PSR12.Traits.UseDeclaration.BlankLineAfterLastUse"/><!-- we want 1 blank line before brace -->
+        <exclude name="PSR12.Traits.UseDeclaration.UseAfterBrace"/><!-- we want 1 blank line after brace -->
+        <exclude name="Squiz.Functions.FunctionDeclarationArgumentSpacing.SpacingAfterHint"/><!-- already checked by SlevomatCodingStandard.TypeHints.ParameterTypeHintSpacing.MultipleSpacesBetweenTypeHintAndParameter -->
+        <exclude name="Squiz.Functions.MultiLineFunctionDeclaration.NewlineBeforeOpenBrace"/><!-- clashes with OpeningFunctionBraceBsdAllman -->
+        <exclude name="Squiz.WhiteSpace.ControlStructureSpacing.SpacingBeforeClose"/><!-- extra blank lines for readability are fine -->
+    </rule>
+
+    <!-- restore changes made by PSR12 -->
+    <rule ref="Squiz.WhiteSpace.SuperfluousWhitespace.StartFile">
+        <severity>5</severity>
+    </rule>
+    <rule ref="Squiz.WhiteSpace.SuperfluousWhitespace.EndFile">
+        <severity>5</severity>
+    </rule>
+    <rule ref="Squiz.WhiteSpace.SuperfluousWhitespace.EmptyLines">
+        <severity>5</severity>
+    </rule>
+    <rule ref="Generic.PHP.DisallowShortOpenTag.EchoFound">
+        <severity>5</severity>
+    </rule>
+
     <rule ref="Generic.Arrays.ArrayIndent">
         <exclude name="Generic.Arrays.ArrayIndent.CloseBraceNotNewLine"/><!-- multiline items causes evaluation as multiline array https://github.com/squizlabs/PHP_CodeSniffer/issues/1791 -->
     </rule>
@@ -19,15 +47,7 @@
     <rule ref="Generic.CodeAnalysis.UnconditionalIfStatement"/>
     <rule ref="Generic.CodeAnalysis.UnnecessaryFinalModifier"/>
     <rule ref="Generic.CodeAnalysis.UselessOverridingMethod"/>
-    <rule ref="Generic.ControlStructures.InlineControlStructure"/>
-    <rule ref="Generic.Files.ByteOrderMark"/>
     <rule ref="Generic.Files.InlineHTML"/>
-    <rule ref="Generic.Files.LineEndings">
-        <properties>
-            <property name="eolChar" value="\n"/>
-        </properties>
-    </rule>
-    <rule ref="Generic.Formatting.DisallowMultipleStatements"/>
     <rule ref="Generic.Formatting.MultipleStatementAlignment">
         <properties>
             <property name="maxPadding" value="0"/>
@@ -36,18 +56,13 @@
     </rule>
     <rule ref="Generic.Formatting.SpaceAfterCast"/>
     <rule ref="Generic.Formatting.SpaceAfterNot"/>
-    <rule ref="Generic.Functions.FunctionCallArgumentSpacing"/>
     <rule ref="Generic.Functions.OpeningFunctionBraceBsdAllman"/>
     <rule ref="Generic.NamingConventions.ConstructorName"/>
-    <rule ref="Generic.NamingConventions.UpperCaseConstantName"/>
     <rule ref="Generic.PHP.CharacterBeforePHPOpeningTag"/>
     <rule ref="Generic.PHP.DeprecatedFunctions"/>
     <rule ref="Generic.PHP.DisallowShortOpenTag"/>
     <rule ref="Generic.PHP.DiscourageGoto"/>
     <rule ref="Generic.PHP.ForbiddenFunctions"/>
-    <rule ref="Generic.PHP.LowerCaseConstant"/>
-    <rule ref="Generic.PHP.LowerCaseKeyword"/>
-    <rule ref="Generic.PHP.LowerCaseType"/>
     <rule ref="Generic.Strings.UnnecessaryStringConcat">
         <properties>
             <property name="allowMultiline" value="true"/>
@@ -58,47 +73,12 @@
             <property name="ignoreNewlines" value="true"/>
         </properties>
     </rule>
-    <rule ref="Generic.WhiteSpace.DisallowTabIndent"/>
-    <rule ref="Generic.WhiteSpace.IncrementDecrementSpacing"/>
     <rule ref="Generic.WhiteSpace.LanguageConstructSpacing"/>
-    <rule ref="Generic.WhiteSpace.ScopeIndent">
-        <properties>
-            <property name="tabIndent" value="false"/>
-        </properties>
-    </rule>
 
     <rule ref="PEAR.Classes.ClassDeclaration"/>
     <rule ref="PEAR.Commenting.InlineComment"/>
     <rule ref="PEAR.Formatting.MultiLineAssignment"/>
     <rule ref="PEAR.WhiteSpace.ObjectOperatorIndent"/>
-
-    <rule ref="PSR1.Classes.ClassDeclaration"/>
-    <rule ref="PSR1.Files.SideEffects"/>
-    <rule ref="PSR1.Methods.CamelCapsMethodName"/>
-
-    <rule ref="PSR2.Classes.PropertyDeclaration"/>
-    <rule ref="PSR2.ControlStructures.ControlStructureSpacing">
-        <exclude name="PSR2.ControlStructures.ControlStructureSpacing.SpacingAfterOpenBrace"/><!-- we want to put first expression of multiline condition on next line -->
-    </rule>
-    <rule ref="PSR2.ControlStructures.ElseIfDeclaration"/>
-    <rule ref="PSR2.ControlStructures.SwitchDeclaration"/>
-    <rule ref="PSR2.Files.ClosingTag"/>
-    <rule ref="PSR2.Files.EndFileNewline"/>
-    <rule ref="PSR2.Methods.FunctionCallSignature"/>
-    <rule ref="PSR2.Methods.FunctionClosingBrace"/>
-    <rule ref="PSR2.Methods.MethodDeclaration"/>
-    <rule ref="PSR2.Namespaces.UseDeclaration"/>
-
-    <rule ref="PSR12.Classes.AnonClassDeclaration">
-        <exclude name="PSR12.Classes.AnonClassDeclaration.CloseBraceAfterBody"/>
-    </rule>
-    <rule ref="PSR12.Classes.ClosingBrace"/>
-    <rule ref="PSR12.ControlStructures.BooleanOperatorPlacement"/>
-    <rule ref="PSR12.ControlStructures.ControlStructureSpacing"/>
-    <rule ref="PSR12.Files.ImportStatement"/>
-    <rule ref="PSR12.Files.OpenTag"/>
-    <rule ref="PSR12.Functions.NullableTypeDeclaration"/>
-    <rule ref="PSR12.Operators.OperatorSpacing"/>
 
     <rule ref="SlevomatCodingStandard.Arrays.MultiLineArrayEndBracketPlacement"/>
     <rule ref="SlevomatCodingStandard.Arrays.SingleLineArrayWhitespace"/>
@@ -251,7 +231,6 @@
     </rule>
     <rule ref="Squiz.Classes.ClassFileName"/>
     <rule ref="Squiz.Classes.SelfMemberReference"/>
-    <rule ref="Squiz.Classes.ValidClassName"/>
     <rule ref="Squiz.Commenting.DocCommentAlignment">
         <exclude name="Squiz.Commenting.DocCommentAlignment.SpaceAfterStar"/><!-- space needed for indented annotations -->
     </rule>
@@ -284,20 +263,7 @@
     <rule ref="Squiz.Commenting.FunctionComment.MissingParamTag">
         <message>@param annotation for parameter "%s" missing</message>
     </rule>
-    <rule ref="Squiz.ControlStructures.ControlSignature"/>
-    <rule ref="Squiz.ControlStructures.ForEachLoopDeclaration"/>
-    <rule ref="Squiz.ControlStructures.ForLoopDeclaration"/>
-    <rule ref="Squiz.Functions.FunctionDeclaration"/>
-    <rule ref="Squiz.Functions.FunctionDeclarationArgumentSpacing">
-        <properties>
-            <property name="equalsSpacing" value="1"/>
-        </properties>
-        <exclude name="Squiz.Functions.FunctionDeclarationArgumentSpacing.SpacingAfterHint"/><!-- already checked by SlevomatCodingStandard.TypeHints.ParameterTypeHintSpacing.MultipleSpacesBetweenTypeHintAndParameter -->
-    </rule>
     <rule ref="Squiz.Functions.GlobalFunction"/>
-    <rule ref="Squiz.Functions.MultiLineFunctionDeclaration">
-        <exclude name="Squiz.Functions.MultiLineFunctionDeclaration.NewlineBeforeOpenBrace"/><!-- clashes with OpeningFunctionBraceBsdAllman -->
-    </rule>
     <rule ref="Squiz.NamingConventions.ValidVariableName">
         <exclude name="Squiz.NamingConventions.ValidVariableName.PublicHasUnderscore"/>
         <exclude name="Squiz.NamingConventions.ValidVariableName.PrivateNoUnderscore"/>
@@ -311,7 +277,6 @@
     <rule ref="Squiz.PHP.InnerFunctions"/>
     <rule ref="Squiz.PHP.LowercasePHPFunctions"/>
     <rule ref="Squiz.PHP.NonExecutableCode"/>
-    <rule ref="Squiz.Scope.MethodScope"/>
     <rule ref="Squiz.Scope.StaticThisUsage"/>
     <rule ref="Squiz.Strings.DoubleQuoteUsage">
         <exclude name="Squiz.Strings.DoubleQuoteUsage.ContainsVar"/><!-- we do not strictly require sprintf -->
@@ -323,7 +288,6 @@
         </properties>
     </rule>
     <rule ref="Squiz.Strings.EchoedStrings"/>
-    <rule ref="Squiz.WhiteSpace.CastSpacing"/>
     <rule ref="Squiz.WhiteSpace.FunctionOpeningBraceSpace"/>
     <rule ref="Squiz.WhiteSpace.FunctionSpacing">
         <properties>
@@ -343,10 +307,7 @@
             <property name="ignoreSpacingBeforeAssignments" value="false"/>
         </properties>
     </rule>
-    <rule ref="Squiz.WhiteSpace.ScopeClosingBrace"/>
-    <rule ref="Squiz.WhiteSpace.ScopeKeywordSpacing"/>
     <rule ref="Squiz.WhiteSpace.SemicolonSpacing"/>
-    <rule ref="Squiz.WhiteSpace.SuperfluousWhitespace"/>
 
     <!-- allow grouping of exception in one file -->
     <rule ref="PSR1.Classes.ClassDeclaration.MultipleClasses">
