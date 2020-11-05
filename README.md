@@ -1,7 +1,7 @@
 Nepada - Coding Standard
 ========================
 
-[![Build Status](https://travis-ci.org/nepada/coding-standard.svg?branch=master)](https://travis-ci.org/nepada/coding-standard)
+[![Build Status](https://github.com/nepada/coding-standard/workflows/CI/badge.svg)](https://github.com/nepada/coding-standard/actions?query=workflow%3ACI+branch%3Amaster)
 [![Downloads this Month](https://img.shields.io/packagist/dm/nepada/coding-standard.svg)](https://packagist.org/packages/nepada/coding-standard)
 [![Latest stable](https://img.shields.io/packagist/v/nepada/coding-standard.svg)](https://packagist.org/packages/nepada/coding-standard)
 
