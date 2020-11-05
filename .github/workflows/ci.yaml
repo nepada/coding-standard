@@ -1,0 +1,32 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+  schedule:
+    - cron: '0 10 * * 5'
+
+jobs:
+  tests:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        php:
+          - 7.4
+        composer_args:
+          - '--prefer-stable'
+          - '--prefer-stable --prefer-lowest'
+    name: PHP ${{ matrix.php }} ${{ matrix.composer_args }}
+    steps:
+      - uses: actions/checkout@v2
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ matrix.php }}
+          coverage: none
+      - name: Build
+        env:
+          COMPOSER_ARGS: ${{ matrix.composer_args }}
+        run: composer update --no-interaction --no-progress --prefer-dist $COMPOSER_ARGS
+      - name: Check Code Style
+        run: vendor/bin/phpcs
