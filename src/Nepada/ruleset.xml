@@ -303,8 +303,7 @@
         </properties>
     </rule>
     <rule ref="Squiz.WhiteSpace.LogicalOperatorSpacing"/>
-    <!-- Problematic support of PHP8 attributes, see https://github.com/squizlabs/PHP_CodeSniffer/discussions/3419 -->
-    <!-- rule ref="Squiz.WhiteSpace.MemberVarSpacing"/ -->
+    <rule ref="Squiz.WhiteSpace.MemberVarSpacing"/>
     <rule ref="Squiz.WhiteSpace.ObjectOperatorSpacing">
         <properties>
             <property name="ignoreNewlines" value="true"/>
