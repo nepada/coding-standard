@@ -22,5 +22,10 @@
         "psr-4": {
             "Nepada\\": "src/Nepada/"
         }
+    },
+    "config": {
+        "allow-plugins": {
+            "dealerdirect/phpcodesniffer-composer-installer": false
+        }
     }
 }
