@@ -84,6 +84,10 @@
     <rule ref="SlevomatCodingStandard.Arrays.MultiLineArrayEndBracketPlacement"/>
     <rule ref="SlevomatCodingStandard.Arrays.SingleLineArrayWhitespace"/>
     <rule ref="SlevomatCodingStandard.Arrays.TrailingArrayComma"/>
+    <rule ref="SlevomatCodingStandard.Attributes.AttributeAndTargetSpacing"/>
+    <rule ref="SlevomatCodingStandard.Attributes.DisallowAttributesJoining"/>
+    <rule ref="SlevomatCodingStandard.Attributes.DisallowMultipleAttributesPerLine"/>
+    <rule ref="SlevomatCodingStandard.Attributes.RequireAttributeAfterDocComment"/>
     <rule ref="SlevomatCodingStandard.Classes.BackedEnumTypeSpacing"/>
     <rule ref="SlevomatCodingStandard.Classes.ClassConstantVisibility"/>
     <rule ref="SlevomatCodingStandard.Classes.ClassMemberSpacing"/>
