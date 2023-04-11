@@ -81,6 +81,7 @@
     <rule ref="PEAR.Formatting.MultiLineAssignment"/>
     <rule ref="PEAR.WhiteSpace.ObjectOperatorIndent"/>
 
+    <rule ref="SlevomatCodingStandard.Arrays.DisallowPartiallyKeyed"/>
     <rule ref="SlevomatCodingStandard.Arrays.MultiLineArrayEndBracketPlacement"/>
     <rule ref="SlevomatCodingStandard.Arrays.SingleLineArrayWhitespace"/>
     <rule ref="SlevomatCodingStandard.Arrays.TrailingArrayComma"/>
