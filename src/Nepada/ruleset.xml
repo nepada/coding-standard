@@ -285,15 +285,17 @@
     </rule>
     <rule ref="Squiz.Commenting.EmptyCatchComment"/>
     <rule ref="Squiz.Commenting.FunctionComment">
-        <exclude name="Squiz.Commenting.FunctionComment.EmptyThrows"/><!-- comments arre not required for @throws -->
+        <exclude name="Squiz.Commenting.FunctionComment.EmptyThrows"/><!-- comments are not required for @throws -->
         <exclude name="Squiz.Commenting.FunctionComment.IncorrectParamVarName"/><!-- requires long boolean and integer parameters -->
         <exclude name="Squiz.Commenting.FunctionComment.IncorrectTypeHint"/><!-- generics and collection syntax such as string[] is not supported -->
         <exclude name="Squiz.Commenting.FunctionComment.InvalidReturn"/><!-- requires long boolean and integer parameters -->
         <exclude name="Squiz.Commenting.FunctionComment.Missing"/><!-- PHPDoc is not required on all methods -->
         <exclude name="Squiz.Commenting.FunctionComment.MissingParamComment"/><!-- comments are not required for @param -->
+        <exclude name="Squiz.Commenting.FunctionComment.MissingParamTag"/><!-- @param is required only if not covered by native type -->
         <exclude name="Squiz.Commenting.FunctionComment.MissingReturn"/><!-- void type is not used -->
         <exclude name="Squiz.Commenting.FunctionComment.ParamCommentFullStop"/><!-- comments don't have to be sentences -->
         <exclude name="Squiz.Commenting.FunctionComment.ParamCommentNotCapital"/><!-- comments don't have to be sentences -->
+        <exclude name="Squiz.Commenting.FunctionComment.ParamNameNoMatch"/><!-- does not correctly support partial phpdoc -->
         <exclude name="Squiz.Commenting.FunctionComment.ScalarTypeHintMissing"/><!-- does not consider constraints from parents, also this is checked by slevomat sniffs -->
         <exclude name="Squiz.Commenting.FunctionComment.SpacingAfterParamName"/><!-- we don't want spacing with alignment -->
         <exclude name="Squiz.Commenting.FunctionComment.SpacingAfterParamType"/><!-- we don't want spacing with alignment -->
@@ -308,9 +310,6 @@
     </rule>
     <rule ref="Squiz.Commenting.FunctionComment.InvalidNoReturn">
         <message>Function has no return statement, but annotation @return is present</message>
-    </rule>
-    <rule ref="Squiz.Commenting.FunctionComment.MissingParamTag">
-        <message>@param annotation for parameter "%s" missing</message>
     </rule>
     <rule ref="Squiz.Functions.GlobalFunction"/>
     <rule ref="Squiz.NamingConventions.ValidVariableName">
