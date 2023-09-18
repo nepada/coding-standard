@@ -221,7 +221,6 @@
     <rule ref="SlevomatCodingStandard.TypeHints.NullTypeHintOnLastPosition"/>
     <rule ref="SlevomatCodingStandard.TypeHints.ParameterTypeHintSpacing"/>
     <rule ref="SlevomatCodingStandard.TypeHints.ParameterTypeHint">
-        <exclude name="SlevomatCodingStandard.TypeHints.ParameterTypeHint.UselessAnnotation"/><!-- we don't want partial doc blocks -->
         <properties>
             <property name="traversableTypeHints" type="array">
                 <element value="Traversable"/>
@@ -236,7 +235,6 @@
         </properties>
     </rule>
     <rule ref="SlevomatCodingStandard.TypeHints.ReturnTypeHint">
-        <exclude name="SlevomatCodingStandard.TypeHints.ReturnTypeHint.UselessAnnotation"/><!-- we don't want partial doc blocks -->
         <properties>
             <property name="traversableTypeHints" type="array">
                 <element value="Traversable"/>
