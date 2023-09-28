@@ -110,7 +110,6 @@
         </properties>
     </rule>
     <rule ref="SlevomatCodingStandard.Classes.ConstantSpacing"/>
-    <rule ref="SlevomatCodingStandard.Classes.DisallowConstructorPropertyPromotion"/>
     <rule ref="SlevomatCodingStandard.Classes.DisallowMultiConstantDefinition"/>
     <rule ref="SlevomatCodingStandard.Classes.DisallowMultiPropertyDefinition"/>
     <rule ref="SlevomatCodingStandard.Classes.DisallowStringExpressionPropertyFetch"/>
