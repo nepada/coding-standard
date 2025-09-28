@@ -7,7 +7,7 @@
 
     <arg name="extensions" value="php,phpt"/>
     <file>src</file>
-    <!--<file>tests</file>-->
+    <file>tests</file>
 
     <rule ref="Nepada">
     </rule>
