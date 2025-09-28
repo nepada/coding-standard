@@ -26,7 +26,7 @@ You can either use the ruleset as-is, or customize it to suit your needs:
 ```xml
 <?xml version="1.0"?>
 <ruleset>
-    <config name="installed_paths" value="../../nepada/coding-standard/src"/><!-- relative path from PHPCS source location -->
+    <config name="installed_paths" value="../../slevomat/coding-standard,../../nepada/coding-standard/src"/><!-- relative path from PHPCS source location -->
 
     <arg value="ps"/><!-- show progress of the run, show sniff names -->
     <arg name="cache" value=".phpcs-cache"/>
