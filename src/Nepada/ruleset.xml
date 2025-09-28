@@ -10,7 +10,9 @@
         <exclude name="PSR12.Files.DeclareStatement.SpaceFoundAfterDirective"/><!-- we use space in declare statement -->
         <exclude name="PSR12.Files.DeclareStatement.SpaceFoundBeforeDirectiveValue"/><!-- we use space in declare statement -->
         <exclude name="PSR12.Files.FileHeader.SpacingAfterTagBlock"/><!-- interferes with declare statement on first line -->
-        <exclude name="PSR12.Files.FileHeader.SpacingAfterUseBlock"/><!-- avoid blank linke between class and function imports -->
+        <exclude name="PSR12.Files.FileHeader.SpacingAfterUseBlock"/><!-- avoid blank linke between class, function and const imports -->
+        <exclude name="PSR12.Files.FileHeader.SpacingAfterUseConstBlock"/><!-- avoid blank linke between class, function and const imports -->
+        <exclude name="PSR12.Files.FileHeader.SpacingAfterUseFunctionBlock"/><!-- avoid blank linke between class, function and const imports -->
         <exclude name="PSR12.Traits.UseDeclaration.BlankLineAfterLastUse"/><!-- we want 1 blank line before brace -->
         <exclude name="PSR12.Traits.UseDeclaration.UseAfterBrace"/><!-- we want 1 blank line after brace -->
         <exclude name="Squiz.Functions.FunctionDeclarationArgumentSpacing.SpacingAfterHint"/><!-- already checked by SlevomatCodingStandard.TypeHints.ParameterTypeHintSpacing.MultipleSpacesBetweenTypeHintAndParameter -->
