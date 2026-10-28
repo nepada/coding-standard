@@ -146,6 +146,7 @@
     <rule ref="SlevomatCodingStandard.Commenting.DocCommentSpacing"/>
     <rule ref="SlevomatCodingStandard.Commenting.EmptyComment"/>
     <rule ref="SlevomatCodingStandard.Commenting.InlineDocCommentDeclaration"/>
+    <rule ref="SlevomatCodingStandard.Commenting.RequireOneDocComment"/>
     <rule ref="SlevomatCodingStandard.Commenting.UselessFunctionDocComment">
         <properties>
             <property name="traversableTypeHints" type="array">
