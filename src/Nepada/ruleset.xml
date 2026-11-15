@@ -371,12 +371,4 @@
         </properties>
     </rule>
     <rule ref="Squiz.WhiteSpace.SemicolonSpacing"/>
-
-    <!-- allow grouping of exception in one file -->
-    <rule ref="PSR1.Classes.ClassDeclaration.MultipleClasses">
-        <exclude-pattern>*/exceptions.php</exclude-pattern>
-    </rule>
-    <rule ref="Squiz.Classes.ClassFileName.NoMatch">
-        <exclude-pattern>*/exceptions.php</exclude-pattern>
-    </rule>
 </ruleset>
